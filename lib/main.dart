@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/Dash.dart';
 import 'package:to_do_app/Home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:to_do_app/Test.dart';
+import 'package:to_do_app/Welcome.dart';
+
 
 void main() {
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -23,7 +24,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My To~Do App',
-      home: Test()
+      theme: ThemeData(
+        primarySwatch:Colors.blue,
+        //fontFamily: "Ubuntu",
+      ),
+      home: Welcome()
     );
   }
 }

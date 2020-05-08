@@ -32,6 +32,7 @@ class _HomeState extends State<Dash> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),//drawerIcon
         title: Text('My To~Do App'),
         centerTitle: true,
         backgroundColor: Colors.greenAccent[700],
