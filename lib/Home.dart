@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('My To~Do App'),
         centerTitle: true,
-        backgroundColor: Colors.greenAccent[700],
+        backgroundColor: Colors.black,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

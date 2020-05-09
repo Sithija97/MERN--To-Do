@@ -32,12 +32,14 @@ class _HomeState extends State<Dash> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),//drawerIcon
-        title: Text('My To~Do App'),
+        leading:
+            IconButton(icon: Icon(Icons.menu), onPressed: () {}), //drawerIcon
+        title: Text('My To~Do '),
         centerTitle: true,
-        backgroundColor: Colors.greenAccent[700],
+        backgroundColor: Colors.blue[200],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[900],
         onPressed: () {
           showDialog(
             context: context,
@@ -56,7 +58,7 @@ class _HomeState extends State<Dash> {
                         createToDos();
                         Navigator.of(context).pop();
                       },
-                      child: Text("Add"))
+                      child: Text("Add")),
                 ],
               );
             },
@@ -67,36 +69,35 @@ class _HomeState extends State<Dash> {
       body: StreamBuilder(
           stream: Firestore.instance.collection("MyTodos").snapshots(),
           builder: (context, snapshots) {
-            if(snapshots.data != null){
+            if (snapshots.data != null) {
               return ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshots.data.documents.length,
-                itemBuilder: (context, index) {
-                  DocumentSnapshot documentSnapshot =
-                      snapshots.data.documents[index];
-                  return Dismissible(
-                      onDismissed: (direction) {
-                        deleteToDos(documentSnapshot["todoTitle"]);
-                      },
-                      key: Key(documentSnapshot["todoTitle"]),
-                      child: Card(
-                        elevation: 4,
-                        margin: EdgeInsets.all(6),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                        child: ListTile(
-                          title: Text(documentSnapshot["todoTitle"]),
-                          trailing: IconButton(
-                              icon: Icon(Icons.delete),
-                              color: Colors.blue[900],
-                              onPressed: () {
-                                deleteToDos(documentSnapshot["todoTitle"]);
-                              }),
-                        ),
-                      ));
-                });
-            }
-            else{
+                  shrinkWrap: true,
+                  itemCount: snapshots.data.documents.length,
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot documentSnapshot =
+                        snapshots.data.documents[index];
+                    return Dismissible(
+                        onDismissed: (direction) {
+                          deleteToDos(documentSnapshot["todoTitle"]);
+                        },
+                        key: Key(documentSnapshot["todoTitle"]),
+                        child: Card(
+                          elevation: 4,
+                          margin: EdgeInsets.all(6),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          child: ListTile(
+                            title: Text(documentSnapshot["todoTitle"]),
+                            trailing: IconButton(
+                                icon: Icon(Icons.delete),
+                                color: Colors.blue[900],
+                                onPressed: () {
+                                  deleteToDos(documentSnapshot["todoTitle"]);
+                                }),
+                          ),
+                        ));
+                  });
+            } else {
               return Text("Loading..");
             }
           }),

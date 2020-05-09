@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My To~Do App',
+      title: 'My To~Do ',
       theme: ThemeData(
-        primarySwatch:Colors.blue,
+//        primarySwatch:Colors.blue,
         //fontFamily: "Ubuntu",
       ),
       home: Welcome()
