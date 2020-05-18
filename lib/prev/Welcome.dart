@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/Dash.dart';
 import 'package:flutter_progress_button/flutter_progress_button.dart';
 import 'const.dart';
 
@@ -30,7 +29,7 @@ class _WelcomeState extends State<Welcome> {
             alignment: Alignment.center,
             child: Container(
               width: MediaQuery.of(context).size.width * .75,
-              child: Image.asset("assets/images/undraw_add_tasks_mxew.png"),
+              //child: Image.asset("assets/images/undraw_add_tasks_mxew.png"),
             ),
           ),
 
@@ -47,14 +46,14 @@ Widget buildHeader() {
     padding: const EdgeInsets.only(top: 50),
     child: Align(
       alignment: Alignment.topCenter,
-      child: Image.asset("assets/images/logo.png"),
+      //child: Image.asset("assets/images/logo.png"),
     ),
   );
 }
 
 Widget buildFooter(BuildContext context) {
   void navigateNext() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Dash()));
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => Dash()));
   }
 
   return Positioned(

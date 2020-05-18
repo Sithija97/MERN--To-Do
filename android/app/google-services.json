@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "176946497776",
-    "firebase_url": "https://health-app-19dc8.firebaseio.com",
-    "project_id": "health-app-19dc8",
-    "storage_bucket": "health-app-19dc8.appspot.com"
+    "project_number": "980410076341",
+    "firebase_url": "https://flutter-apps-6f753.firebaseio.com",
+    "project_id": "flutter-apps-6f753",
+    "storage_bucket": "flutter-apps-6f753.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:176946497776:android:96b7c0d15144bf1f769a35",
+        "mobilesdk_app_id": "1:980410076341:android:1b9a00da19cb97c0d242fc",
         "android_client_info": {
           "package_name": "com.example.to_do_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "176946497776-31a6687vq4mv8r3c5j5j05iqboigcuc7.apps.googleusercontent.com",
+          "client_id": "980410076341-sc2krm779f5ll89s3fsq3nehns3kqncm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB1S6jFWG100jljVbzi7DlL_78dQxvYtVc"
+          "current_key": "AIzaSyBljz7Wf1VrPfDg87PbVPkAZ4hFHQV4OCQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "176946497776-31a6687vq4mv8r3c5j5j05iqboigcuc7.apps.googleusercontent.com",
+              "client_id": "980410076341-sc2krm779f5ll89s3fsq3nehns3kqncm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
