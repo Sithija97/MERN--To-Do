@@ -34,9 +34,9 @@ class _HomeState extends State<Dash> {
       appBar: AppBar(
         leading:
             IconButton(icon: Icon(Icons.menu), onPressed: () {}), //drawerIcon
-        title: Text('My To~Do '),
+        title: Text('My To~Do ', style: TextStyle(color: Colors.black)),
         centerTitle: true,
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.lightBlue,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[900],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:to_do_app/Dash.dart';
 
 class WelcomeUserWidget extends StatelessWidget {
   GoogleSignIn _googleSignIn;
@@ -56,6 +57,26 @@ class WelcomeUserWidget extends StatelessWidget {
                                 SizedBox(width: 10),
                                 Text('Log out of Google',
                                     style: TextStyle(color: Colors.white))
+                              ],
+                            ))),
+                            FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Dash()));
+                        },
+                        color: Colors.lightBlue,
+                        child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.mode_edit, color: Colors.black),
+                                SizedBox(width: 10),
+                                Text('Get Started',
+                                    style: TextStyle(color: Colors.black))
                               ],
                             )))
                   ],
