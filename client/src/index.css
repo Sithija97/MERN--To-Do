@@ -1,94 +1,98 @@
 :root {
-	--primary: #050396;
-	--secondary: #8A4EFC;
-	--light: #EEE;
-	--light-alt: #61759b;
-	--dark: #131A26;
-	--dark-alt: #202B3E;
+  --primary: #050396;
+  --secondary: #4e91fc;
+  --light: #eee;
+  --light-alt: #61759b;
+  --dark: #131a26;
+  --dark-alt: #202b3e;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-	font-family: "Fira Sans", sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 body {
-	background-color: var(--dark-alt);
-	color: var(--light);
+  background-color: var(--dark-alt);
+  color: var(--light);
 }
 
 .App {
-	padding: 32px;
+  padding: 32px;
 }
 
 h1 {
-	font-size: 40px;
-	font-weight: 700;
-	margin-bottom: 32px;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 32px;
 }
 
 h4 {
-	font-size: 18px;
-	color: var(--light-alt);
-	text-transform: uppercase;
-	font-weight: 400;
-	margin-bottom: 16px;
+  font-size: 18px;
+  color: var(--light-alt);
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 16px;
 }
 
 .todo {
-	position: relative;
-	background-color: var(--dark);
-	padding: 16px;
-	border-radius: 16px;
-	display: flex;
-	align-items: center;
-	transition: 0.5s;
-	cursor: pointer;
-	margin-bottom: 16px;
+  position: relative;
+  background-color: var(--dark);
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+  margin-bottom: 16px;
 }
 
 .todo:hover {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .todo .checkbox {
-	width: 20px;
-	height: 20px;
-	margin-right: 16px;
-	border-radius: 50%;
-	background-color: var(--dark-alt);
-	background-image: linear-gradient(to bottom, transparent, transparent);
-	transition: 0.4s;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+  border-radius: 50%;
+  background-color: var(--dark-alt);
+  background-image: linear-gradient(to bottom, transparent, transparent);
+  transition: 0.4s;
 }
 
 .todo.is-complete .checkbox {
-	background-color: var(--primary);
-	background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
+  background-color: var(--primary);
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--secondary)
+  );
 }
 
 .todo .text {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .todo.is-complete .text {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .todo .delete-todo {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 16px;
-	color: var(--light);
-	width: 24px;
-	height: 24px;
-	border-radius: 50%;
-	background-color: #f7071f;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: 700;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  color: var(--light);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f7071f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }
