@@ -1,11 +1,8 @@
+import { Home } from "pages";
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <h3>Dev</h3>
-    </>
-  );
+  return <Home />;
 }
 
 export default App;
