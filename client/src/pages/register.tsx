@@ -1,3 +1,7 @@
 export const Register = () => {
-  return <div>Register</div>;
+  return (
+    <>
+      <h1 className="text-l font-semibold">Register</h1>
+    </>
+  );
 };
