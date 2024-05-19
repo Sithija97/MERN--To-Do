@@ -1,10 +1,60 @@
-import { Navbar } from "components";
+import { AddEditNotes, Navbar, NoteCard } from "components";
+import { MdAdd } from "react-icons/md";
 
 export const Home = () => {
   return (
     <>
       <Navbar />
-      <h1 className="text-l font-semibold">Home</h1>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-4 gap-4 mt-8">
+          <NoteCard
+            title="Meeting on 7th April"
+            date="3rd April"
+            content="Meeting on 7th April Meeting on 7th April"
+            tags="#Meeting"
+            isPinned
+            onEdit={() => {}}
+            onDelete={() => {}}
+            onPinNote={() => {}}
+          />
+          <NoteCard
+            title="Meeting on 7th April"
+            date="3rd April"
+            content="Meeting on 7th April Meeting on 7th April"
+            tags="#Meeting"
+            isPinned
+            onEdit={() => {}}
+            onDelete={() => {}}
+            onPinNote={() => {}}
+          />
+          <NoteCard
+            title="Meeting on 7th April"
+            date="3rd April"
+            content="Meeting on 7th April Meeting on 7th April"
+            tags="#Meeting"
+            isPinned
+            onEdit={() => {}}
+            onDelete={() => {}}
+            onPinNote={() => {}}
+          />
+          <NoteCard
+            title="Meeting on 7th April"
+            date="3rd April"
+            content="Meeting on 7th April Meeting on 7th April"
+            tags="#Meeting"
+            isPinned
+            onEdit={() => {}}
+            onDelete={() => {}}
+            onPinNote={() => {}}
+          />
+        </div>
+      </div>
+
+      <button className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10">
+        <MdAdd className="text-[32px] text-white" />
+      </button>
+
+      <AddEditNotes />
     </>
   );
 };

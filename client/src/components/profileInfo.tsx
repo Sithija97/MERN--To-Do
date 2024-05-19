@@ -15,7 +15,7 @@ export const ProfileInfo: FC<IProps> = ({ logout }) => {
       <div>
         <p className="text-sm font-medium">Sithija</p>
         <button className="text-sm underline text-slate-700" onClick={logout}>
-          Logout
+          Log out
         </button>
       </div>
     </div>
