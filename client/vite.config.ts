@@ -10,6 +10,7 @@ export default defineConfig({
       components: "/src/components",
       router: "/src/router",
       utils: "/src/utils",
+      enums: "/src/enums",
     },
   },
 });
