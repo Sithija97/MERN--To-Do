@@ -23,11 +23,11 @@ export const RootLayout = () => {
       {/* main page */}
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="md:col-span-2  w-[77%] border-r h-screen">
+          <div className="md:col-span-2 w-[77%] h-screen border-r">
             {/* <Outlet /> */}
             <Drawer>
               <DrawerTrigger>
-                <Button variant="outline">Open Drawer</Button>
+                <span>open drawer</span>
               </DrawerTrigger>
               <DrawerContent>
                 <DrawerHeader>
@@ -38,7 +38,7 @@ export const RootLayout = () => {
                 </DrawerHeader>
                 <DrawerFooter>
                   <DrawerClose>
-                    <Button variant="outline">Cancel</Button>
+                    <span className="flex justify-end">cancel</span>
                   </DrawerClose>
                 </DrawerFooter>
               </DrawerContent>

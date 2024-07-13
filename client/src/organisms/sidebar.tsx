@@ -58,12 +58,6 @@ export const SideNavBar = () => {
             icon: Settings,
             variant: "ghost",
           },
-          {
-            title: "User",
-            href: "#",
-            icon: UserRound,
-            variant: "ghost",
-          },
         ]}
       />
     </div>

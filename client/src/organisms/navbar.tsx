@@ -9,6 +9,7 @@ import { FC } from "react";
 import { cn } from "../lib/utils";
 import { useLocation } from "react-router-dom";
 import { buttonVariants } from "../atoms/ui/button";
+import { SignedIn, useAuth, UserButton } from "@clerk/clerk-react";
 
 type IProps = {
   isCollapsed: boolean;
@@ -23,6 +24,7 @@ type IProps = {
 
 export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
   const { pathname } = useLocation();
+  const { userId } = useAuth();
   return (
     <TooltipProvider>
       <div
@@ -90,6 +92,21 @@ export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
               </div>
             )
           )}
+          <div
+            className={cn(
+              buttonVariants({
+                variant: "ghost",
+                size: "icon",
+              }),
+              "h-9 w-9"
+            )}
+          >
+            {userId && (
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+            )}
+          </div>
         </nav>
       </div>
     </TooltipProvider>
