@@ -1,4 +1,3 @@
-import { Button } from "../atoms/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -11,6 +10,7 @@ import {
 } from "../atoms/ui/drawer";
 import { SideNavBar } from "../organisms/sidebar";
 import { cn } from "../lib/utils";
+import img from "../assets/Emails-rafiki.svg";
 
 export const RootLayout = () => {
   return (
@@ -22,8 +22,8 @@ export const RootLayout = () => {
 
       {/* main page */}
       <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="md:col-span-2 w-[77%] h-screen border-r">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="h-screen border-r bg-slate-50">
             {/* <Outlet /> */}
             <Drawer>
               <DrawerTrigger>
@@ -43,6 +43,13 @@ export const RootLayout = () => {
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
+          </div>
+          <div className="w-full flex items-center justify-center">
+            <img
+              src={img}
+              alt="bg-image"
+              className="h-[50%] w-[50%] rounded-full opacity-90"
+            />
           </div>
         </div>
       </div>
