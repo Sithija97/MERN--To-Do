@@ -5,9 +5,7 @@ export interface Note {
   id: number;
   title: string;
   content: string;
-  timestamp: Date;
   categoryId: number;
-  category: Category;
   filters: string[];
   reminder: {
     dateTime: Date;

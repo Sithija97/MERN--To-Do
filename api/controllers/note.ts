@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
+import { noteService } from "../services/note.js";
+import { Note } from "../interfaces/note.js";
 
 // Get all notes
 export const getNotes = asyncHandler(async (req: Request, res: Response) => {
-  // const notes = await noteService.getAllNotes();
-  // res.status(200).json(notes);
+  const notes = await noteService.getAllNotes();
+  res.status(200).json(notes);
 });
 
 // Get note by ID
@@ -20,9 +22,9 @@ export const getNoteById = asyncHandler(async (req: Request, res: Response) => {
 
 // Create note
 export const createNote = asyncHandler(async (req: Request, res: Response) => {
-  // const note: Note = req.body;
-  // const newNote = await noteService.createNote(note);
-  // res.status(201).json(newNote);
+  const note: Note = req.body;
+  const newNote = await noteService.createNote(note);
+  res.status(201).json(newNote);
 });
 
 // Update note

@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { logEvents, logger } from "./middleware/logger.js";
 import { errorHandler } from "./middleware/errorHandler.js";
-import { categoryRouter } from "./routes/category.js";
+import { categoryRouter, noteRouter } from "./routes/index.js";
 
 dotenv.config();
 
@@ -28,7 +28,9 @@ app.use(cors({ origin: "*" }));
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
+// Routes
 app.use("/api/category", categoryRouter);
+app.use("/api/note", noteRouter);
 
 app.use(errorHandler);
 
