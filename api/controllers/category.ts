@@ -29,7 +29,7 @@ export const createCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const category: Category = req.body;
     const newCategory = await categoryService.createCategory(category);
-    res.status(201).json(newCategory);
+    res.status(201);
   }
 );
 
@@ -37,7 +37,7 @@ export const createCategory = asyncHandler(
 export const updateCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const categoryId = req.body.categoryId;
-    const updatedCategory: Category = req.body;
+    const updatedCategory = req.body.updatedCategory;
     const category = await categoryService.updateCategory(
       categoryId,
       updatedCategory
@@ -46,7 +46,7 @@ export const updateCategory = asyncHandler(
       res.status(404).json({ message: "Category not found" });
       return;
     }
-    res.status(200).json(category);
+    res.status(200);
   }
 );
 
@@ -65,6 +65,6 @@ export const deleteCategory = asyncHandler(
       res.status(404).json({ message: "Category not found" });
       return;
     }
-    res.status(204).json({ message: "Category deleted" });
+    res.status(204);
   }
 );

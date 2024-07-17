@@ -1,5 +1,4 @@
 import { model, Schema, Types } from "mongoose";
-import { Reminder } from "./reminder.js";
 
 const noteSchema = new Schema(
   {
@@ -15,12 +14,12 @@ const noteSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Category",
       required: true,
-      default: new Types.ObjectId("669725e79303e35d5490ab95"),
+      default: new Types.ObjectId("6697603dc38ac0c2eba9fda2"),
     },
     filters: {
       type: [String],
     },
-    reminder: Reminder,
+    reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
   },
   {
     timestamps: true,

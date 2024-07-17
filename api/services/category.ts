@@ -1,28 +1,27 @@
 import mongoose from "mongoose";
-import { Category } from "../interfaces/category.js";
-
-const categoryCollection = mongoose.connection.collection("categories");
+import { Category } from "../models/index.js";
+import { Category as ICategory } from "../interfaces/category.js";
 
 export const categoryService = {
   async getAllCategories() {
-    const categories = await categoryCollection.find().toArray();
+    const categories = await Category.find();
     return categories;
   },
 
   async getCategoryById(categoryId: string) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const category = await categoryCollection.findOne({ _id: objectId });
+    const category = await Category.findById(objectId);
     return category ? category : null;
   },
 
-  async createCategory(category: Category) {
-    const newCategory = await categoryCollection.insertOne(category);
-    return category;
+  async createCategory(category: ICategory) {
+    const newCategory = await Category.create(category);
+    return newCategory;
   },
 
-  async updateCategory(categoryId: string, updatedCategory: Category) {
+  async updateCategory(categoryId: string, updatedCategory: ICategory) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const result = await categoryCollection.updateOne(
+    const result = await Category.updateOne(
       { _id: objectId },
       { $set: updatedCategory }
     );
@@ -31,7 +30,7 @@ export const categoryService = {
 
   async deleteCategory(categoryId: string) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    await categoryCollection.deleteOne({ _id: objectId });
+    await Category.deleteOne({ _id: objectId });
     return objectId;
   },
 };
