@@ -4,12 +4,11 @@ import {
   Settings,
   LayoutGrid,
   Rocket,
-  UserRound,
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
 import { Button } from "../atoms/ui/button";
-import { NavBar } from "./navbar";
+import { NavBar } from "../molecules";
 
 export const SideNavBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
