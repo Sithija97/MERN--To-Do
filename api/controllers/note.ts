@@ -24,7 +24,7 @@ export const getNoteById = asyncHandler(async (req: Request, res: Response) => {
 export const createNote = asyncHandler(async (req: Request, res: Response) => {
   const note: Note = req.body;
   const newNote = await noteService.createNote(note);
-  res.status(201);
+  res.status(201).send();
 });
 
 // Update note
@@ -36,7 +36,7 @@ export const updateNote = asyncHandler(async (req: Request, res: Response) => {
     res.status(404).json({ message: "Note not found" });
     return;
   }
-  res.status(200);
+  res.status(200).send();
 });
 
 // Delete note
@@ -47,5 +47,5 @@ export const deleteNote = asyncHandler(async (req: Request, res: Response) => {
     return;
   }
   await noteService.deleteNote(noteId);
-  res.status(204);
+  res.status(204).send();
 });

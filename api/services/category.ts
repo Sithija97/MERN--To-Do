@@ -11,7 +11,10 @@ export const categoryService = {
   async getCategoryById(categoryId: string) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
     const category = await Category.findById(objectId);
-    return category ? category : null;
+    if (!category) {
+      throw new Error("Category not found");
+    }
+    return category;
   },
 
   async createCategory(category: ICategory) {
@@ -25,7 +28,10 @@ export const categoryService = {
       { _id: objectId },
       { $set: updatedCategory }
     );
-    return result.modifiedCount === 1 ? updatedCategory : null;
+    if (result.modifiedCount !== 1) {
+      throw new Error("Category update failed.");
+    }
+    return updatedCategory;
   },
 
   async deleteCategory(categoryId: string) {

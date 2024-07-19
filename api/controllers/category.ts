@@ -29,7 +29,7 @@ export const createCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const category: Category = req.body;
     const newCategory = await categoryService.createCategory(category);
-    res.status(201);
+    res.status(201).send();
   }
 );
 
@@ -46,7 +46,7 @@ export const updateCategory = asyncHandler(
       res.status(404).json({ message: "Category not found" });
       return;
     }
-    res.status(200);
+    res.status(200).send();
   }
 );
 
@@ -65,6 +65,6 @@ export const deleteCategory = asyncHandler(
       res.status(404).json({ message: "Category not found" });
       return;
     }
-    res.status(204);
+    res.status(204).send();
   }
 );

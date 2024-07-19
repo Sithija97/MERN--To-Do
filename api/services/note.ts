@@ -11,7 +11,10 @@ export const noteService = {
   async getNoteById(noteId: string) {
     const objectId = new mongoose.Types.ObjectId(noteId);
     const note = await Note.findOne({ _id: objectId });
-    return note ? note : null;
+    if (!note) {
+      throw new Error("Note not found");
+    }
+    return note;
   },
 
   async createNote(note: INote) {
@@ -25,7 +28,10 @@ export const noteService = {
       { _id: objectId },
       { $set: updatedNote }
     );
-    return result.modifiedCount === 1 ? updatedNote : null;
+    if (result.modifiedCount !== 1) {
+      throw new Error("Category update failed.");
+    }
+    return updatedNote;
   },
 
   async deleteNote(noteId: string) {

@@ -1,6 +1,7 @@
 import { model, Schema, Types } from "mongoose";
+import { Note as INote } from "../interfaces/note.js";
 
-const noteSchema = new Schema(
+const noteSchema = new Schema<INote>(
   {
     title: {
       type: String,
@@ -15,6 +16,10 @@ const noteSchema = new Schema(
       ref: "Category",
       required: true,
       default: new Types.ObjectId("6697603dc38ac0c2eba9fda2"),
+    },
+    userId: {
+      type: String,
+      required: true,
     },
     filters: {
       type: [String],
