@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "@clerk/clerk-react";
-import { RootLayout } from "../templates/root";
 import { useNavigate } from "react-router-dom";
+import { RootLayout } from "../templates";
 
 export const RootPage = () => {
   const { userId, isLoaded } = useAuth();
