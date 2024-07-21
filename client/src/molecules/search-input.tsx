@@ -1,6 +1,7 @@
 import { PlusIcon, Search } from "lucide-react";
 import { Input } from "../attoms/ui/input";
 import { Button } from "../attoms/ui/button";
+import { AddNoteSection } from "./add-note-section";
 
 export const SearchInput = () => {
   return (
@@ -11,9 +12,14 @@ export const SearchInput = () => {
           <Input placeholder="Search" className="pl-8" />
         </div>
       </form>
-      <Button variant={"secondary"} className="mt-2 w-full">
-        <PlusIcon className="mr-2 h-4 w-4" /> Add Notes
-      </Button>
+
+      <AddNoteSection
+        triggerButtonContent={
+          <Button variant={"secondary"} className="mt-2 w-full">
+            <PlusIcon className="mr-2 h-4 w-4" /> Add Notes
+          </Button>
+        }
+      />
     </div>
   );
 };

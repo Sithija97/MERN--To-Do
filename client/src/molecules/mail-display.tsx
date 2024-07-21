@@ -21,9 +21,6 @@ import {
 } from "../attoms/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../attoms/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../attoms/ui/tooltip";
-import { Textarea } from "../attoms/ui/textarea";
-import { Label } from "../attoms/ui/label";
-import { Switch } from "../attoms/ui/switch";
 import { Button } from "../attoms/ui/button";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 
@@ -205,8 +202,8 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
           <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
             {mail.text}
           </div>
-          <Separator className="mt-auto" />
-          <div className="p-4">
+          {/* <Separator className="mt-auto" /> */}
+          {/* <div className="p-4">
             <form>
               <div className="grid gap-4">
                 <Textarea
@@ -231,7 +228,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
                 </div>
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="p-8 text-center text-muted-foreground">

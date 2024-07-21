@@ -14,7 +14,7 @@ export const getCategories = asyncHandler(
 // Get category by ID
 export const getCategoryById = asyncHandler(
   async (req: Request, res: Response) => {
-    const categoryId = req.body.categoryId;
+    const categoryId = req.params.categoryId;
     const category = await categoryService.getCategoryById(categoryId);
     if (!category) {
       res.status(404).json({ message: "Category not found" });

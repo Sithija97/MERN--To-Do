@@ -21,9 +21,14 @@ const noteSchema = new Schema<INote>(
       type: String,
       required: true,
     },
+    userName: {
+      type: String,
+      required: true,
+    },
     filters: {
       type: [String],
     },
+    hasReminder: { type: Boolean, required: true, default: false },
     reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
   },
   {

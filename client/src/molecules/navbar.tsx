@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react";
+import { CirclePlus, LucideIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -19,6 +19,7 @@ type IProps = {
     label?: string;
     icon: LucideIcon;
     variant: "default" | "ghost";
+    onclick?: () => void;
   }[];
 };
 
@@ -46,6 +47,7 @@ export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
                       link.variant === "default" &&
                         "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                     )}
+                    onClick={link?.onclick}
                   >
                     <link.icon className="h-5 w-5 text-blue-500" />
                     <span className="sr-only">{link.title}</span>
@@ -75,6 +77,7 @@ export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
                     "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
                   "justify-start"
                 )}
+                onClick={link?.onclick}
               >
                 <link.icon className="mr-2 h-5 w-5 text-blue-500" />
                 <div className="font-normal text-white">{link.title}</div>

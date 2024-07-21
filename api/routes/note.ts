@@ -12,9 +12,10 @@ const noteRouter = express.Router();
 noteRouter
   .route("/")
   .get(getNotes)
-  .get(getNoteById)
   .post(createNote)
   .patch(updateNote)
   .delete(deleteNote);
+
+noteRouter.route("/:noteId").get(getNoteById);
 
 export { noteRouter };

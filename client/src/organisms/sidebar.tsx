@@ -4,15 +4,22 @@ import {
   Settings,
   LayoutGrid,
   Rocket,
+  CirclePlus,
+  NotebookPen,
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
 import { NavBar } from "../molecules";
 import { Button } from "../attoms/ui/button";
+import { AddCategorySection } from "../molecules/add-category-section";
 
 export const SideNavBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+
+  const openAddCategory = () => setIsOpen(true);
+  const closeAddCategory = () => setIsOpen(false);
 
   const onlyWidth = useWindowWidth();
   const mobileWidth = onlyWidth < 768;
@@ -40,25 +47,21 @@ export const SideNavBar = () => {
             variant: "default",
           },
           {
-            title: "Community",
+            title: "Notes",
             href: "#",
-            icon: Rocket,
+            icon: NotebookPen,
             variant: "ghost",
           },
           {
-            title: "Tools",
+            title: "Categories",
             href: "#",
-            icon: LayoutGrid,
+            icon: CirclePlus,
             variant: "ghost",
-          },
-          {
-            title: "Settings",
-            href: "#",
-            icon: Settings,
-            variant: "ghost",
+            onclick: openAddCategory,
           },
         ]}
       />
+      <AddCategorySection isOpen={isOpen} onClose={closeAddCategory} />
     </div>
   );
 };

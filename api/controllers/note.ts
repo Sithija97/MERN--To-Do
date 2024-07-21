@@ -11,7 +11,7 @@ export const getNotes = asyncHandler(async (req: Request, res: Response) => {
 
 // Get note by ID
 export const getNoteById = asyncHandler(async (req: Request, res: Response) => {
-  const noteId = req.body.noteId;
+  const noteId = req.params.noteId;
   const note = await noteService.getNoteById(noteId);
   if (!note) {
     res.status(404).json({ message: "Note not found" });

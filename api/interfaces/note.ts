@@ -8,7 +8,9 @@ export interface Note {
   content: string;
   categoryId: Schema.Types.ObjectId;
   userId: String;
+  userName: String;
   filters: string[];
+  hasReminder: boolean;
   reminder: {
     dateTime: Date;
     status: ReminderStatus;
