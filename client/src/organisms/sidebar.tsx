@@ -7,8 +7,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
-import { Button } from "../atoms/ui/button";
 import { NavBar } from "../molecules";
+import { Button } from "../attoms/ui/button";
 
 export const SideNavBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);

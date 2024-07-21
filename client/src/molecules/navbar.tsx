@@ -4,12 +4,12 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../atoms/ui/tooltip";
+} from "../attoms/ui/tooltip";
 import { FC } from "react";
 import { cn } from "../lib/utils";
 import { useLocation } from "react-router-dom";
-import { buttonVariants } from "../atoms/ui/button";
 import { SignedIn, useAuth, UserButton } from "@clerk/clerk-react";
+import { buttonVariants } from "../attoms/ui/button";
 
 type IProps = {
   isCollapsed: boolean;
