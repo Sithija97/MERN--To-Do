@@ -2,7 +2,7 @@ import {
   ChevronRight,
   House,
   CirclePlus,
-  NotebookPen,
+  // NotebookPen,
   SlidersHorizontal,
 } from "lucide-react";
 import { useState } from "react";
@@ -25,7 +25,7 @@ export const SideNavBar = () => {
   const mobileWidth = onlyWidth < 768;
 
   const navigateToHome = () => navigate("/");
-  const navigateToNotes = () => navigate("/notes");
+  // const navigateToNotes = () => navigate("/notes");
 
   return (
     <div className={`relative px-3 pb-10 pt-24 ${!isCollapsed && "min-w-64"}`}>
@@ -50,13 +50,13 @@ export const SideNavBar = () => {
             variant: "default",
             onclick: navigateToHome,
           },
-          {
-            title: "Notes",
-            href: "/notes",
-            icon: NotebookPen,
-            variant: "ghost",
-            onclick: navigateToNotes,
-          },
+          // {
+          //   title: "Notes",
+          //   href: "/notes",
+          //   icon: NotebookPen,
+          //   variant: "ghost",
+          //   onclick: navigateToNotes,
+          // },
           {
             title: "Categories",
             href: "#",
