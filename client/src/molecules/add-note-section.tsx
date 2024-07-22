@@ -1,4 +1,3 @@
-import { CopyIcon } from "lucide-react";
 import { Button } from "../attoms/ui/button";
 import {
   Dialog,
@@ -14,6 +13,7 @@ import { Input } from "../attoms/ui/input";
 import { Label } from "../attoms/ui/label";
 import { Textarea } from "../attoms/ui/textarea";
 import { Switch } from "../attoms/ui/switch";
+import { CategoryDropDown } from "./category-dropdown";
 
 type IProps = {
   triggerButtonContent?: React.ReactNode;
@@ -27,19 +27,24 @@ export const AddNoteSection = ({ triggerButtonContent }: IProps) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md md:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle>Add Note</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Quickly jot down your thoughts and ideas for easy reference.
           </DialogDescription>
         </DialogHeader>
         <div className="p-4">
           <form>
             <div className="grid gap-4">
-              <Input placeholder="Title" />
+              <div className="flex items-center gap-2">
+                <Input placeholder="Title" />
+                <CategoryDropDown />
+              </div>
+
               <Textarea
                 className="p-4 min-h-80"
                 placeholder={`Take a note...`}
               />
+
               <div className="flex items-center">
                 <Label
                   htmlFor="mute"

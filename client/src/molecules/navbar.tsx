@@ -1,4 +1,4 @@
-import { CirclePlus, LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
