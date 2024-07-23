@@ -1,6 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { ScrollArea } from "../attoms/ui/scroll-area";
-import { Mail } from "../data";
+import { Mail } from "../data/mails";
 import { cn } from "../lib/utils";
 import { Badge } from "../attoms/ui/badge";
 import { ComponentProps } from "react";

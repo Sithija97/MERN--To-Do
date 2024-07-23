@@ -8,7 +8,7 @@ import {
   ReplyAll,
   Trash2,
 } from "lucide-react";
-import { Mail } from "../data";
+import { Mail } from "../data/mails";
 import { Separator } from "../attoms/ui/separator";
 import { Popover, PopoverContent, PopoverTrigger } from "../attoms/ui/popover";
 import { addDays, addHours, format, nextSaturday } from "date-fns";

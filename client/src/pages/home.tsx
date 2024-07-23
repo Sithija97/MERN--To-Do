@@ -1,7 +1,6 @@
-import { NotesSection } from "../organisms";
-import { MailDisplay } from "../molecules";
+import { MailDisplay, NotesSection } from "../organisms";
 import useMail from "../utils";
-import { mails } from "../data";
+import { mails } from "../data/mails";
 import img from "../assets/Emails-rafiki.svg";
 
 export const Home = () => {
