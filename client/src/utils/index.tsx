@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mail, mails } from "../data";
+import { Mail, mails } from "../data/mails";
 
 type Config = {
   selected: Mail["id"] | null;
