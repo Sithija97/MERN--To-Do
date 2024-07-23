@@ -1,7 +1,7 @@
 import { PlusIcon, Search } from "lucide-react";
 import { Input } from "../attoms/ui/input";
 import { Button } from "../attoms/ui/button";
-import { AddNoteSection } from "./add-note-section";
+import { AddNoteSection } from "../organisms";
 
 export const SearchInput = () => {
   return (

@@ -13,7 +13,7 @@ import { Input } from "../attoms/ui/input";
 import { Label } from "../attoms/ui/label";
 import { Textarea } from "../attoms/ui/textarea";
 import { Switch } from "../attoms/ui/switch";
-import { CategoryDropDown } from "./category-dropdown";
+import { CategoryDropDown } from "../molecules/category-dropdown";
 
 type IProps = {
   triggerButtonContent?: React.ReactNode;

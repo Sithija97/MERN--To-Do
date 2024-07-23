@@ -2,7 +2,7 @@ import { useAuth } from "@clerk/clerk-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../attoms/ui/tabs";
 import { SelectSeparator } from "../attoms/ui/select";
 import { mails } from "../data";
-import { MailList } from "../molecules/mail-list";
+import { MailList } from "./mail-list";
 import { SearchInput } from "../molecules";
 
 export const NotesSection = () => {
