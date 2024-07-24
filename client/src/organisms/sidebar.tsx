@@ -52,13 +52,13 @@ export const SideNavBar = () => {
             variant: "default",
             onclick: navigateToHome,
           },
-          {
-            title: "Notes",
-            href: "/notes",
-            icon: NotebookPen,
-            variant: "ghost",
-            onclick: navigateToNotes,
-          },
+          // {
+          //   title: "Notes",
+          //   href: "/notes",
+          //   icon: NotebookPen,
+          //   variant: "ghost",
+          //   onclick: navigateToNotes,
+          // },
           {
             title: "Categories",
             href: "#",
