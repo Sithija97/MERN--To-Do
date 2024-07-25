@@ -8,7 +8,11 @@ import { logEvents, logger } from "./middleware/logger.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { categoryRouter, noteRouter } from "./routes/index.js";
 import { corsOptions } from "./config/cors-options.js";
-import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import {
+  ClerkExpressRequireAuth,
+  ClerkExpressWithAuth,
+} from "@clerk/clerk-sdk-node";
+import { protect } from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -25,27 +29,20 @@ conncetDB();
 app.use(logger);
 
 // Middleware to enable Cross-Origin Resource Sharing (CORS) for all origins
-app.use(cors(corsOptions));
+app.use(cors({ origin: "*" }));
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
 // Routes
-app.use(
-  "/api/category",
-  ClerkExpressRequireAuth({
-    jwtKey: process.env.CLERK_PEM_PUBLIC_KEY,
-  }),
-  categoryRouter
-);
+app.use("/api/category", categoryRouter);
 
-app.use(
-  "/api/note",
-  ClerkExpressRequireAuth({
-    jwtKey: process.env.CLERK_PEM_PUBLIC_KEY,
-  }),
-  noteRouter
-);
+app.use("/api/note", noteRouter);
+
+// Use the lax middleware that returns an empty auth object when unauthenticated
+app.get("/protected-endpoint", protect, (req: any, res) => {
+  res.json({ message: "authenticated" });
+});
 
 app.use(errorHandler);
 
