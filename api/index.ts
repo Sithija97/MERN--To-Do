@@ -29,7 +29,8 @@ conncetDB();
 app.use(logger);
 
 // Middleware to enable Cross-Origin Resource Sharing (CORS) for all origins
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
+app.use(cors(corsOptions));
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());

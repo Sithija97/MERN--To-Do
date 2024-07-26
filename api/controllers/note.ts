@@ -29,7 +29,7 @@ export const createNote = asyncHandler(async (req: Request, res: Response) => {
 
 // Update note
 export const updateNote = asyncHandler(async (req: Request, res: Response) => {
-  const noteId = req.body.noteId;
+  const noteId = req.params.noteId;
   const updatedNote = req.body.updatedNote;
   const note = await noteService.updateNote(noteId, updatedNote);
   if (!note) {
@@ -41,7 +41,7 @@ export const updateNote = asyncHandler(async (req: Request, res: Response) => {
 
 // Delete note
 export const deleteNote = asyncHandler(async (req: Request, res: Response) => {
-  const noteId = req.body.noteId;
+  const noteId = req.params.noteId;
   if (noteId === "66967995394fb772e3f6f12e") {
     res.status(404).json({ message: "Not allowed to delete General note" });
     return;

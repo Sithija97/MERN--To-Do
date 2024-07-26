@@ -13,10 +13,12 @@ const categoryRouter = express.Router();
 categoryRouter
   .route("/")
   .get(protect, getCategories)
-  .post(protect, createCategory)
+  .post(protect, createCategory);
+
+categoryRouter
+  .route("/:categoryId")
+  .get(protect, getCategoryById)
   .patch(protect, updateCategory)
   .delete(protect, deleteCategory);
-
-categoryRouter.route("/:categoryId").get(getCategoryById);
 
 export { categoryRouter };

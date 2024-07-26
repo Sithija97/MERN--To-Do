@@ -49,7 +49,7 @@ export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
                     )}
                     onClick={link?.onclick}
                   >
-                    <link.icon className="h-5 w-5 text-blue-500" />
+                    <link.icon className="h-5 w-5 text-blue-400" />
                     <span className="sr-only">{link.title}</span>
                   </div>
                 </TooltipTrigger>
@@ -79,8 +79,8 @@ export const NavBar: FC<IProps> = ({ links, isCollapsed }) => {
                 )}
                 onClick={link?.onclick}
               >
-                <link.icon className="mr-2 h-5 w-5 text-blue-500" />
-                <div className="font-normal text-white">{link.title}</div>
+                <link.icon className="mr-2 h-5 w-5 text-blue-400" />
+                <div className="font-normal text-blue-400">{link.title}</div>
                 {link.label && (
                   <span
                     className={cn(

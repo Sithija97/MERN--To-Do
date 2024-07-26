@@ -10,13 +10,12 @@ import { protect } from "../middleware/auth.js";
 
 const noteRouter = express.Router();
 
+noteRouter.route("/").get(protect, getNotes).post(protect, createNote);
+
 noteRouter
-  .route("/")
-  .get(protect, getNotes)
-  .post(protect, createNote)
+  .route("/:noteId")
+  .get(protect, getNoteById)
   .patch(protect, updateNote)
   .delete(protect, deleteNote);
-
-noteRouter.route("/:noteId").get(getNoteById);
 
 export { noteRouter };
