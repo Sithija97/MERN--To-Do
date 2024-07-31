@@ -4,13 +4,13 @@ import { Category as ICategory } from "../interfaces/category.js";
 
 export const categoryService = {
   async getAllCategories() {
-    const categories = await Category.find();
+    const categories = await Category.find().lean();
     return categories;
   },
 
   async getCategoryById(categoryId: string) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const category = await Category.findById(objectId);
+    const category = await Category.findById(objectId).lean();
     if (!category) {
       throw new Error("Category not found");
     }

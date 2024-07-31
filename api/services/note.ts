@@ -4,13 +4,13 @@ import { Note as INote } from "../interfaces/note.js";
 
 export const noteService = {
   async getAllNotes() {
-    const notes = await Note.find({}, { __v: 0 });
+    const notes = await Note.find({}, { __v: 0 }).lean();
     return notes;
   },
 
   async getNoteById(noteId: string) {
     const objectId = new mongoose.Types.ObjectId(noteId);
-    const note = await Note.findOne({ _id: objectId }, { __v: 0 });
+    const note = await Note.findOne({ _id: objectId }, { __v: 0 }).lean();
     if (!note) {
       throw new Error("Note not found");
     }
