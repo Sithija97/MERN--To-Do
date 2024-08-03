@@ -5,6 +5,7 @@ import { cn } from "../lib/utils";
 import { Badge } from "../attoms/ui/badge";
 import { ComponentProps } from "react";
 import useMail from "../utils";
+import { useGetNotesQuery } from "../store/notes-slice";
 
 type MailListProps = {
   items: Mail[];
@@ -12,6 +13,8 @@ type MailListProps = {
 
 export function MailList({ items }: MailListProps) {
   const [mail, setMail] = useMail();
+  const { data } = useGetNotesQuery({});
+  // console.log(data);
 
   return (
     <ScrollArea className="h-[calc(100vh-185px)]">

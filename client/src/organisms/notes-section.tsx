@@ -1,4 +1,3 @@
-import { useAuth } from "@clerk/clerk-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../attoms/ui/tabs";
 import { SelectSeparator } from "../attoms/ui/select";
 import { mails } from "../data/mails";
@@ -6,7 +5,6 @@ import { MailList } from "./mail-list";
 import { SearchInput } from "../molecules";
 
 export const NotesSection = () => {
-  const { userId } = useAuth();
   return (
     <Tabs defaultValue="all">
       <div className="flex items-center px-4 py-2">
