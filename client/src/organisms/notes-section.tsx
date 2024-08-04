@@ -1,10 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../attoms/ui/tabs";
 import { SelectSeparator } from "../attoms/ui/select";
-import { mails } from "../data/mails";
-import { MailList } from "./mail-list";
+import { MailList } from "./note-list";
 import { SearchInput } from "../molecules";
+import { useGetNotesQuery } from "../store/notes-slice";
 
 export const NotesSection = () => {
+  const { data } = useGetNotesQuery({});
   return (
     <Tabs defaultValue="all">
       <div className="flex items-center px-4 py-2">
@@ -17,7 +18,7 @@ export const NotesSection = () => {
             value="unread"
             className="text-zinc-600 dark:text-zinc-200"
           >
-            Reminders
+            My notes
           </TabsTrigger>
         </TabsList>
       </div>
@@ -26,7 +27,7 @@ export const NotesSection = () => {
       <SearchInput />
 
       <TabsContent value="all" className="m-0">
-        <MailList items={mails} />
+        <MailList items={data} />
       </TabsContent>
       <TabsContent value="unread" className="m-0">
         {/* <MailList items={mails.filter((item) => !item.read)} /> */}

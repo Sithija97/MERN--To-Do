@@ -11,7 +11,6 @@ import {
 } from "../attoms/ui/dialog";
 import { Input } from "../attoms/ui/input";
 import { Label } from "../attoms/ui/label";
-import { useAuth } from "@clerk/clerk-react";
 
 type IProps = {
   isOpen: boolean;
@@ -19,21 +18,6 @@ type IProps = {
 };
 
 export const AddCategorySection = ({ isOpen, onClose }: IProps) => {
-  const { getToken } = useAuth();
-
-  const fetchData = async () => {
-    try {
-      const token = await getToken();
-      console.log(token);
-    } catch (error) {
-      console.log("error :", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <Dialog open={isOpen}>
       <DialogContent className="sm:max-w-md" onClick={onClose}>

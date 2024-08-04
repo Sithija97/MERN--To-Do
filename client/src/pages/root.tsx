@@ -3,7 +3,7 @@ import { useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { RootLayout } from "../templates";
 import { useAppDispatch } from "../store/store";
-import { setToken } from "../store/auth-slice";
+import { setToken } from "../store/base-slice";
 
 export const RootPage = () => {
   const { userId, isLoaded, getToken } = useAuth();
@@ -12,6 +12,7 @@ export const RootPage = () => {
 
   const setJwtToken = async () => {
     const jwt = await getToken();
+    console.log(jwt);
     dispatch(setToken(jwt));
   };
 
