@@ -1,8 +1,13 @@
+export type Category = {
+  _id: string;
+  title: string;
+};
+
 export type Note = {
   _id: string;
   title: string;
   content: string;
-  categoryId: string;
+  categoryId: Category;
   userId: string;
   userName: string;
   filters: string[];

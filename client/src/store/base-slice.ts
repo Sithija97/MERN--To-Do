@@ -8,7 +8,10 @@ const initialState: InitialBaseState = {
     _id: "",
     title: "",
     content: "",
-    categoryId: "",
+    categoryId: {
+      _id: "",
+      title: "",
+    },
     userId: "",
     userName: "",
     filters: [],

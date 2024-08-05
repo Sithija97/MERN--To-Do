@@ -11,7 +11,7 @@ type NoteListProps = {
   items: Note[];
 };
 
-export function MailList({ items }: NoteListProps) {
+export function NoteList({ items }: NoteListProps) {
   const dispatch = useAppDispatch();
   const note = useAppSelector(selectedNote);
 

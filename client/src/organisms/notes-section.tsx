@@ -1,11 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../attoms/ui/tabs";
 import { SelectSeparator } from "../attoms/ui/select";
-import { MailList } from "./note-list";
+import { NoteList } from "./note-list";
 import { SearchInput } from "../molecules";
 import { useGetNotesQuery } from "../store/notes-slice";
+import { useAuth } from "@clerk/clerk-react";
+import { Note } from "../types";
 
 export const NotesSection = () => {
-  const { data } = useGetNotesQuery({});
+  const { data: notes = [], isSuccess } = useGetNotesQuery({});
+  const { userId } = useAuth();
   return (
     <Tabs defaultValue="all">
       <div className="flex items-center px-4 py-2">
@@ -27,10 +30,16 @@ export const NotesSection = () => {
       <SearchInput />
 
       <TabsContent value="all" className="m-0">
-        <MailList items={data} />
+        <NoteList items={notes} />
       </TabsContent>
       <TabsContent value="unread" className="m-0">
-        {/* <MailList items={mails.filter((item) => !item.read)} /> */}
+        <NoteList
+          items={
+            notes &&
+            isSuccess &&
+            notes.filter((item: Note) => item.userId === userId)
+          }
+        />
       </TabsContent>
     </Tabs>
   );

@@ -186,7 +186,7 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
               </Avatar>
               <div className="grid gap-1">
                 <div className="font-semibold">{note.title}</div>
-                <div className="line-clamp-1 text-xs">{`by ${note.userName}`}</div>
+                <div className="line-clamp-1 text-xs">{`Category : ${note.categoryId.title}`}</div>
                 {/* <div className="line-clamp-1 text-xs">
                   <span className="font-medium">Reply-To:</span> {mail.email}
                 </div> */}

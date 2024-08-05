@@ -15,7 +15,7 @@ const noteSchema = new Schema<INote>(
       type: Schema.Types.ObjectId,
       ref: "Category",
       required: true,
-      default: new Types.ObjectId("6697603dc38ac0c2eba9fda2"),
+      default: new Types.ObjectId("66b08e6d43974055d7ee7aa8"),
     },
     userId: {
       type: String,
