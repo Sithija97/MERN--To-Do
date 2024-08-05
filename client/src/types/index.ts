@@ -9,3 +9,8 @@ export type Note = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type InitialBaseState = {
+  token: string | null;
+  selectedNote: Note;
+};

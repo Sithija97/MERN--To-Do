@@ -27,6 +27,7 @@ const noteSchema = new Schema<INote>(
     },
     filters: {
       type: [String],
+      default: ["general", "work"],
     },
     hasReminder: { type: Boolean, required: true, default: false },
     reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },

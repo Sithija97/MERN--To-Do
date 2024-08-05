@@ -3,15 +3,21 @@ import { ScrollArea } from "../attoms/ui/scroll-area";
 import { cn } from "../lib/utils";
 import { Badge } from "../attoms/ui/badge";
 import { ComponentProps } from "react";
-import useMail from "../utils";
 import { Note } from "../types";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { selectedNote, setNote } from "../store/base-slice";
 
 type NoteListProps = {
   items: Note[];
 };
 
 export function MailList({ items }: NoteListProps) {
-  const [mail, setMail] = useMail();
+  const dispatch = useAppDispatch();
+  const note = useAppSelector(selectedNote);
+
+  const setSelectedMail = (item: Note) => {
+    dispatch(setNote({ ...item }));
+  };
 
   return (
     <ScrollArea className="h-[calc(100vh-185px)]">
@@ -22,14 +28,9 @@ export function MailList({ items }: NoteListProps) {
               key={item._id}
               className={cn(
                 "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-white",
-                mail.selected === item._id && "bg-muted"
+                note._id === item._id && "bg-muted"
               )}
-              onClick={() =>
-                setMail({
-                  ...mail,
-                  selected: item._id,
-                })
-              }
+              onClick={() => setSelectedMail(item)}
             >
               <div className="flex w-full flex-col gap-1">
                 <div className="flex items-center">
@@ -42,7 +43,7 @@ export function MailList({ items }: NoteListProps) {
                   <div
                     className={cn(
                       "ml-auto text-xs",
-                      mail.selected === item._id
+                      note._id === item._id
                         ? "text-foreground"
                         : "text-muted-foreground"
                     )}
@@ -59,11 +60,14 @@ export function MailList({ items }: NoteListProps) {
               </div>
               {item.filters.length ? (
                 <div className="flex items-center gap-2">
-                  {/* {item.labels.map((label) => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
-                    {label}
-                  </Badge>
-                ))} */}
+                  {item.filters.map((label) => (
+                    <Badge
+                      key={label}
+                      variant={getBadgeVariantFromLabel(label)}
+                    >
+                      {label}
+                    </Badge>
+                  ))}
                 </div>
               ) : null}
             </button>

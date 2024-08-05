@@ -8,7 +8,6 @@ import {
   ReplyAll,
   Trash2,
 } from "lucide-react";
-import { Mail } from "../data/mails";
 import { Separator } from "../attoms/ui/separator";
 import { Popover, PopoverContent, PopoverTrigger } from "../attoms/ui/popover";
 import { addDays, addHours, format, nextSaturday } from "date-fns";
@@ -23,12 +22,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "../attoms/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../attoms/ui/tooltip";
 import { Button } from "../attoms/ui/button";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Note } from "../types";
 
-type MailDisplayProps = {
-  mail: Mail | null;
+type NoteDisplayProps = {
+  note: Note;
 };
 
-export const MailDisplay = ({ mail }: MailDisplayProps) => {
+export const NoteDisplay = ({ note }: NoteDisplayProps) => {
   const today = new Date();
 
   return (
@@ -38,7 +38,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
           <div className="flex items-center gap-2">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <Archive className="h-4 w-4" />
                   <span className="sr-only">Archive</span>
                 </Button>
@@ -47,7 +47,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <ArchiveX className="h-4 w-4" />
                   <span className="sr-only">Move to junk</span>
                 </Button>
@@ -56,7 +56,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <Trash2 className="h-4 w-4" />
                   <span className="sr-only">Move to trash</span>
                 </Button>
@@ -68,7 +68,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
               <Popover>
                 <PopoverTrigger asChild>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" disabled={!mail}>
+                    <Button variant="ghost" size="icon" disabled={!note}>
                       <Clock className="h-4 w-4" />
                       <span className="sr-only">Snooze</span>
                     </Button>
@@ -127,7 +127,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
           <div className="ml-auto flex items-center gap-2">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <Reply className="h-4 w-4" />
                   <span className="sr-only">Reply</span>
                 </Button>
@@ -136,7 +136,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <ReplyAll className="h-4 w-4" />
                   <span className="sr-only">Reply all</span>
                 </Button>
@@ -145,7 +145,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" disabled={!mail}>
+                <Button variant="ghost" size="icon" disabled={!note}>
                   <Forward className="h-4 w-4" />
                   <span className="sr-only">Forward</span>
                 </Button>
@@ -157,7 +157,7 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
         <Separator orientation="vertical" className="mx-2 h-6" />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" disabled={!mail}>
+            <Button variant="ghost" size="icon" disabled={!note}>
               <MoreVertical className="h-4 w-4" />
               <span className="sr-only">More</span>
             </Button>
@@ -171,36 +171,36 @@ export const MailDisplay = ({ mail }: MailDisplayProps) => {
         </DropdownMenu>
       </div>
       <Separator />
-      {mail ? (
+      {note ? (
         <div className="flex flex-1 flex-col">
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
               <Avatar>
-                <AvatarImage alt={mail.name} />
+                <AvatarImage alt={note.userName} />
                 <AvatarFallback>
-                  {mail.name
+                  {note.userName
                     .split(" ")
                     .map((chunk) => chunk[0])
                     .join("")}
                 </AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <div className="font-semibold">{mail.name}</div>
-                <div className="line-clamp-1 text-xs">{mail.subject}</div>
-                <div className="line-clamp-1 text-xs">
+                <div className="font-semibold">{note.title}</div>
+                <div className="line-clamp-1 text-xs">{`by ${note.userName}`}</div>
+                {/* <div className="line-clamp-1 text-xs">
                   <span className="font-medium">Reply-To:</span> {mail.email}
-                </div>
+                </div> */}
               </div>
             </div>
-            {mail.date && (
+            {note.updatedAt && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(mail.date), "PPpp")}
+                {format(new Date(note.updatedAt), "PPpp")}
               </div>
             )}
           </div>
           <Separator />
           <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
-            {mail.text}
+            {note.content}
           </div>
           {/* <Separator className="mt-auto" /> */}
           {/* <div className="p-4">
