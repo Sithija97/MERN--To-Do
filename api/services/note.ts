@@ -34,14 +34,10 @@ export const noteService = {
 
   async updateNote(noteId: string, updatedNote: INote) {
     const objectId = new mongoose.Types.ObjectId(noteId);
-    const result = await Note.updateOne(
-      { _id: objectId },
-      { $set: updatedNote }
-    );
-    if (result.modifiedCount !== 1) {
-      throw new Error("Category update failed.");
-    }
-    return updatedNote;
+    const result = await Note.findByIdAndUpdate(objectId, updatedNote, {
+      new: true,
+    });
+    return result;
   },
 
   async deleteNote(noteId: string) {

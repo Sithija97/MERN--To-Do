@@ -7,3 +7,14 @@ export const isEmptyString = (param: string) => {
 };
 
 export const isEmptyArray = (array: Category[]) => array.length === 0;
+
+export const getCookieValue = (name: string) => {
+  const cookies = document.cookie.split("; ");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=");
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+  return null;
+};

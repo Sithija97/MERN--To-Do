@@ -25,8 +25,11 @@ import { Button } from "../attoms/ui/button";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Note } from "../types";
 import { DeleteModal } from "./delete-modal";
-import { BaseTypes } from "../enums";
+import { AddNoteModalType, BaseTypes } from "../enums";
 import { useState } from "react";
+import { useUpdateNoteMutation } from "../store/notes-slice";
+import { RootState, useAppSelector } from "../store/store";
+import { AddNoteSection } from "./add-note-section";
 
 type NoteDisplayProps = {
   note: Note;
@@ -34,9 +37,22 @@ type NoteDisplayProps = {
 
 export const NoteDisplay = ({ note }: NoteDisplayProps) => {
   const today = new Date();
-
   const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenEditNote, setIsOpenEditNote] = useState(false);
+  const [updateNote] = useUpdateNoteMutation();
+
+  const { selectedNote } = useAppSelector(
+    (state: RootState) => state.baseState
+  );
+
+  const handleAddNoteModal = () => setIsOpenEditNote(!isOpenEditNote);
   const handleDeleteModal = () => setIsOpenDelete(!isOpenDelete);
+
+  const handleArchiveNote = () =>
+    updateNote({ ...selectedNote, isTrashed: false, hasArchived: true });
+
+  const handleTrashNote = () =>
+    updateNote({ ...selectedNote, isTrashed: true, hasArchived: false });
 
   return (
     <>
@@ -46,7 +62,12 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
             <div className="flex items-center gap-2">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" disabled={!note}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    disabled={!note}
+                    onClick={handleArchiveNote}
+                  >
                     <Archive className="h-4 w-4" />
                     <span className="sr-only">Archive</span>
                   </Button>
@@ -55,7 +76,12 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" disabled={!note}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    disabled={!note}
+                    onClick={handleTrashNote}
+                  >
                     <Trash className="h-4 w-4" />
                     <span className="sr-only">Move to trash</span>
                   </Button>
@@ -78,7 +104,12 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" disabled={!note}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    disabled={!note}
+                    onClick={handleAddNoteModal}
+                  >
                     <FilePenLine className="h-4 w-4" />
                     <span className="sr-only">Edit</span>
                   </Button>
@@ -260,6 +291,13 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
           </div>
         )}
       </div>
+
+      <AddNoteSection
+        type={AddNoteModalType.EDIT}
+        isOpen={isOpenEditNote}
+        onClose={handleAddNoteModal}
+      />
+
       <DeleteModal
         isOpen={isOpenDelete}
         type={BaseTypes.NOTE}

@@ -3,7 +3,6 @@ import { InitialBaseState } from "../types";
 import { RootState } from "./store";
 
 const initialState: InitialBaseState = {
-  token: null,
   selectedNote: {
     _id: "",
     title: "",
@@ -15,6 +14,9 @@ const initialState: InitialBaseState = {
     userId: "",
     userName: "",
     filters: [],
+    hasReminder: false,
+    isTrashed: false,
+    hasArchived: false,
     createdAt: "",
     updatedAt: "",
   },
@@ -24,12 +26,6 @@ const baseSlice = createSlice({
   name: "baseState",
   initialState,
   reducers: {
-    setToken: (state, { payload }) => {
-      state.token = payload;
-    },
-    clearToken: (state) => {
-      state.token = initialState.token;
-    },
     setNote: (state, { payload }) => {
       state.selectedNote = payload;
     },
@@ -41,5 +37,5 @@ const baseSlice = createSlice({
 
 export const selectedNote = (state: RootState) => state.baseState.selectedNote;
 
-export const { setToken, clearToken, setNote, clearNote } = baseSlice.actions;
+export const { setNote, clearNote } = baseSlice.actions;
 export default baseSlice.reducer;

@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "./store";
+import { getCookieValue } from "../utils";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:8080",
-  prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).baseState.token;
+  prepareHeaders: (headers) => {
+    const token = getCookieValue("__session");
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }

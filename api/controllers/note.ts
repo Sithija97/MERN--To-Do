@@ -30,7 +30,7 @@ export const createNote = asyncHandler(async (req: Request, res: Response) => {
 // Update note
 export const updateNote = asyncHandler(async (req: Request, res: Response) => {
   const noteId = req.params.noteId;
-  const updatedNote = req.body.updatedNote;
+  const updatedNote = req.body;
   const note = await noteService.updateNote(noteId, updatedNote);
   if (!note) {
     res.status(404).json({ message: "Note not found" });

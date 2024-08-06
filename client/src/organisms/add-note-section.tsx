@@ -15,23 +15,43 @@ import { Switch } from "../attoms/ui/switch";
 import { CategoryDropDown } from "../molecules/category-dropdown";
 import { useState } from "react";
 import { useAuth, useClerk } from "@clerk/clerk-react";
-import { useAddNewNoteMutation } from "../store/notes-slice";
+import {
+  useAddNewNoteMutation,
+  useUpdateNoteMutation,
+} from "../store/notes-slice";
+import { AddNoteModalType } from "../enums";
+import { RootState, useAppDispatch, useAppSelector } from "../store/store";
+import { setNote } from "../store/base-slice";
 
 type IProps = {
+  type?: AddNoteModalType;
   isOpen: boolean;
   onClose: () => void;
 };
 
-export const AddNoteSection = ({ isOpen, onClose }: IProps) => {
+export const AddNoteSection = ({
+  type = AddNoteModalType.NEW,
+  isOpen,
+  onClose,
+}: IProps) => {
   const { userId } = useAuth();
   const { user } = useClerk();
 
+  const dispatch = useAppDispatch();
   const [addNewNote] = useAddNewNoteMutation();
+  const [updateNote] = useUpdateNoteMutation();
+
+  const { selectedNote } = useAppSelector(
+    (state: RootState) => state.baseState
+  );
 
   const initialState = {
-    title: "",
-    content: "",
-    category: "general",
+    title: type === AddNoteModalType.EDIT ? selectedNote.title : "",
+    content: type === AddNoteModalType.EDIT ? selectedNote.content : "",
+    category:
+      type === AddNoteModalType.EDIT
+        ? selectedNote.categoryId.title.toLowerCase()
+        : "general",
     userId,
     userName: user?.fullName,
   };
@@ -68,11 +88,32 @@ export const AddNoteSection = ({ isOpen, onClose }: IProps) => {
     }
   };
 
+  const handleUpdateNote = (
+    e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    if (!isAddNoteDisabled) {
+      const updatedNote = {
+        ...selectedNote,
+        title: formData.title,
+        content: formData.content,
+        category: formData.category,
+      };
+
+      updateNote(updatedNote);
+      dispatch(setNote(updatedNote));
+      setFormData(initialState);
+      onClose();
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md md:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Add Note</DialogTitle>
+          <DialogTitle>{`${
+            type === AddNoteModalType.NEW ? "Add" : "Edit"
+          } Note`}</DialogTitle>
           <DialogDescription>
             Quickly jot down your thoughts and ideas for easy reference.
           </DialogDescription>
@@ -113,15 +154,27 @@ export const AddNoteSection = ({ isOpen, onClose }: IProps) => {
           </form>
         </div>
         <DialogFooter className="sm:justify-start flex items-center">
-          <Button
-            size="sm"
-            className="ml-auto"
-            type="button"
-            onClick={handleAddNote}
-            disabled={isAddNoteDisabled}
-          >
-            Add Note
-          </Button>
+          {type === AddNoteModalType.EDIT ? (
+            <Button
+              size="sm"
+              className="ml-auto"
+              type="button"
+              onClick={handleUpdateNote}
+              disabled={isAddNoteDisabled}
+            >
+              Update Note
+            </Button>
+          ) : (
+            <Button
+              size="sm"
+              className="ml-auto"
+              type="button"
+              onClick={handleAddNote}
+              disabled={isAddNoteDisabled}
+            >
+              Add Note
+            </Button>
+          )}
           <DialogClose asChild>
             <Button type="button" variant="secondary">
               Close

@@ -37,7 +37,7 @@ export const createCategory = asyncHandler(
 export const updateCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const categoryId = req.params.categoryId;
-    const updatedCategory = req.body.updatedCategory;
+    const updatedCategory = req.body;
     const category = await categoryService.updateCategory(
       categoryId,
       updatedCategory

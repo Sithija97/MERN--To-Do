@@ -11,11 +11,13 @@ export type Note = {
   userId: string;
   userName: string;
   filters: string[];
+  hasReminder: boolean;
+  isTrashed: boolean;
+  hasArchived: boolean;
   createdAt: string;
   updatedAt: string;
 };
 
 export type InitialBaseState = {
-  token: string | null;
   selectedNote: Note;
 };

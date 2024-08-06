@@ -24,14 +24,11 @@ export const categoryService = {
 
   async updateCategory(categoryId: string, updatedCategory: ICategory) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const result = await Category.updateOne(
-      { _id: objectId },
-      { $set: updatedCategory }
-    );
-    if (result.modifiedCount !== 1) {
-      throw new Error("Category update failed.");
-    }
-    return updatedCategory;
+    const result = await Category.findByIdAndUpdate(objectId, updatedCategory, {
+      new: true,
+    });
+
+    return result;
   },
 
   async deleteCategory(categoryId: string) {
