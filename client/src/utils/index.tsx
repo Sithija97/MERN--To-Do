@@ -1,21 +1,20 @@
-import { useState, useEffect } from "react";
-import { Mail, mails } from "../data/mails";
+import { Category } from "../types";
 
-type Config = {
-  selected: Mail["id"] | null;
+export const isEmptyString = (param: string) => {
+  let isEmpty = false;
+  param.length === 0 ? (isEmpty = true) : (isEmpty = false);
+  return isEmpty;
 };
 
-const useMail = (): [Config, React.Dispatch<Config>] => {
-  const [mail, setMail] = useState<Config>({ selected: mails[0].id });
+export const isEmptyArray = (array: Category[]) => array.length === 0;
 
-  // Ensure initial selection remains consistent even on re-renders
-  useEffect(() => {
-    if (!mail.selected && mails.length > 0) {
-      setMail({ selected: mails[0].id });
+export const getCookieValue = (name: string) => {
+  const cookies = document.cookie.split("; ");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=");
+    if (cookieName === name) {
+      return cookieValue;
     }
-  }, [mails]); // Only re-run when mails data changes
-
-  return [mail, setMail];
+  }
+  return null;
 };
-
-export default useMail;

@@ -9,40 +9,45 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../attoms/ui/dialog";
-import { Input } from "../attoms/ui/input";
-import { Label } from "../attoms/ui/label";
+import { BaseTypes } from "../enums";
+import { useDeleteNoteMutation } from "../store/notes-slice";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { clearNote } from "../store/base-slice";
 
 type IProps = {
   isOpen: boolean;
+  type: BaseTypes;
   onClose: () => void;
 };
 
-export const AddCategorySection = ({ isOpen, onClose }: IProps) => {
+export const DeleteModal = ({ isOpen, type, onClose }: IProps) => {
+  const dispatch = useAppDispatch();
+  const { selectedNote } = useAppSelector((state) => state.baseState);
+  const [deleteNote] = useDeleteNoteMutation();
+
+  const handleDeleteNote = () => {
+    dispatch(clearNote());
+    deleteNote(selectedNote);
+  };
+
   return (
     <Dialog open={isOpen}>
       <DialogContent className="sm:max-w-md" onClick={onClose}>
         <DialogHeader>
-          <DialogTitle>Create Category</DialogTitle>
+          <DialogTitle>{`Delete ${type}`}</DialogTitle>
           <DialogDescription>
-            Easily organize your items into groups for better management.
+            {`Are you sure to delete this ${type} permanently?`}
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center space-x-2">
-          <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
-            <Input id="link" placeholder="Add your category" />
-          </div>
-        </div>
+
         <DialogFooter className="sm:justify-start">
           <Button
             type="button"
-            variant="default"
+            variant="destructive"
             className="ml-auto"
-            onClick={onClose}
+            onClick={handleDeleteNote}
           >
-            Create
+            Delete
           </Button>
           <DialogClose asChild>
             <Button type="button" variant="secondary" onClick={onClose}>

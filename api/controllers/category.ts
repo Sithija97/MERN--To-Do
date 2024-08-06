@@ -37,7 +37,7 @@ export const createCategory = asyncHandler(
 export const updateCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const categoryId = req.params.categoryId;
-    const updatedCategory = req.body.updatedCategory;
+    const updatedCategory = req.body;
     const category = await categoryService.updateCategory(
       categoryId,
       updatedCategory
@@ -54,7 +54,7 @@ export const updateCategory = asyncHandler(
 export const deleteCategory = asyncHandler(
   async (req: Request, res: Response) => {
     const categoryId = req.params.categoryId;
-    if (categoryId === "66967995394fb772e3f6f12e") {
+    if (categoryId === "66b111f33123378832c2a3b2") {
       res
         .status(404)
         .json({ message: "Not allowed to delete General category" });

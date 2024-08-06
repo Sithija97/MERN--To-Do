@@ -15,4 +15,6 @@ export interface Note {
     dateTime: Date;
     status: ReminderStatus;
   };
+  isTrashed: boolean;
+  hasArchived: boolean;
 }

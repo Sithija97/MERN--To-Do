@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { cn } from "../lib/utils";
 import { SideNavBar } from "../organisms";
+import { Toaster } from "../attoms/ui/toaster";
 
 export const RootLayout = () => {
   return (
@@ -13,6 +14,7 @@ export const RootLayout = () => {
       {/* main page */}
       <div className="w-full h-full">
         <Outlet />
+        <Toaster />
       </div>
     </section>
   );

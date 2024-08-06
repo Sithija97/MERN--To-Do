@@ -4,13 +4,13 @@ import { Category as ICategory } from "../interfaces/category.js";
 
 export const categoryService = {
   async getAllCategories() {
-    const categories = await Category.find().lean();
+    const categories = await Category.find({}, { __v: 0 }).lean();
     return categories;
   },
 
   async getCategoryById(categoryId: string) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const category = await Category.findById(objectId).lean();
+    const category = await Category.findById(objectId, { __v: 0 }).lean();
     if (!category) {
       throw new Error("Category not found");
     }
@@ -24,14 +24,11 @@ export const categoryService = {
 
   async updateCategory(categoryId: string, updatedCategory: ICategory) {
     const objectId = new mongoose.Types.ObjectId(categoryId);
-    const result = await Category.updateOne(
-      { _id: objectId },
-      { $set: updatedCategory }
-    );
-    if (result.modifiedCount !== 1) {
-      throw new Error("Category update failed.");
-    }
-    return updatedCategory;
+    const result = await Category.findByIdAndUpdate(objectId, updatedCategory, {
+      new: true,
+    });
+
+    return result;
   },
 
   async deleteCategory(categoryId: string) {

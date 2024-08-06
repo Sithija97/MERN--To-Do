@@ -4,13 +4,23 @@ import { Note as INote } from "../interfaces/note.js";
 
 export const noteService = {
   async getAllNotes() {
-    const notes = await Note.find({}, { __v: 0 }).lean();
+    const notes = await Note.find({}, { __v: 0 })
+      .populate({
+        path: "categoryId",
+        select: "-__v",
+      })
+      .lean();
     return notes;
   },
 
   async getNoteById(noteId: string) {
     const objectId = new mongoose.Types.ObjectId(noteId);
-    const note = await Note.findOne({ _id: objectId }, { __v: 0 }).lean();
+    const note = await Note.findOne({ _id: objectId }, { __v: 0 })
+      .populate({
+        path: "categoryId",
+        select: "-__v",
+      })
+      .lean();
     if (!note) {
       throw new Error("Note not found");
     }
@@ -24,14 +34,10 @@ export const noteService = {
 
   async updateNote(noteId: string, updatedNote: INote) {
     const objectId = new mongoose.Types.ObjectId(noteId);
-    const result = await Note.updateOne(
-      { _id: objectId },
-      { $set: updatedNote }
-    );
-    if (result.modifiedCount !== 1) {
-      throw new Error("Category update failed.");
-    }
-    return updatedNote;
+    const result = await Note.findByIdAndUpdate(objectId, updatedNote, {
+      new: true,
+    });
+    return result;
   },
 
   async deleteNote(noteId: string) {
