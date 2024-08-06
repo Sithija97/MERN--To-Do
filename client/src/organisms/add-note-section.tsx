@@ -22,6 +22,8 @@ import {
 import { AddNoteModalType } from "../enums";
 import { RootState, useAppDispatch, useAppSelector } from "../store/store";
 import { setNote } from "../store/base-slice";
+import { format } from "date-fns";
+import { toast } from "../attoms/ui/use-toast";
 
 type IProps = {
   type?: AddNoteModalType;
@@ -84,6 +86,10 @@ export const AddNoteSection = ({
     if (!isAddNoteDisabled) {
       addNewNote(formData);
       setFormData(initialState);
+      toast({
+        title: "Note has been successfully created.",
+        description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+      });
       onClose();
     }
   };
@@ -103,6 +109,10 @@ export const AddNoteSection = ({
       updateNote(updatedNote);
       dispatch(setNote(updatedNote));
       setFormData(initialState);
+      toast({
+        title: "Note has been successfully updated.",
+        description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+      });
       onClose();
     }
   };

@@ -30,6 +30,7 @@ import { useState } from "react";
 import { useUpdateNoteMutation } from "../store/notes-slice";
 import { RootState, useAppSelector } from "../store/store";
 import { AddNoteSection } from "./add-note-section";
+import { toast } from "../attoms/ui/use-toast";
 
 type NoteDisplayProps = {
   note: Note;
@@ -48,11 +49,21 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
   const handleAddNoteModal = () => setIsOpenEditNote(!isOpenEditNote);
   const handleDeleteModal = () => setIsOpenDelete(!isOpenDelete);
 
-  const handleArchiveNote = () =>
+  const handleArchiveNote = () => {
     updateNote({ ...selectedNote, isTrashed: false, hasArchived: true });
+    toast({
+      title: "This note has been moved to archived notes",
+      description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+    });
+  };
 
-  const handleTrashNote = () =>
+  const handleTrashNote = () => {
     updateNote({ ...selectedNote, isTrashed: true, hasArchived: false });
+    toast({
+      title: "This note has been moved to trash",
+      description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+    });
+  };
 
   return (
     <>
