@@ -15,7 +15,7 @@ const noteSchema = new Schema<INote>(
       type: Schema.Types.ObjectId,
       ref: "Category",
       required: true,
-      default: new Types.ObjectId("66b08e6d43974055d7ee7aa8"),
+      default: new Types.ObjectId("66b111f33123378832c2a3b2"),
     },
     userId: {
       type: String,
@@ -31,6 +31,8 @@ const noteSchema = new Schema<INote>(
     },
     hasReminder: { type: Boolean, required: true, default: false },
     reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
+    isTrashed: { type: Boolean, required: true, default: false },
+    hasArchived: { type: Boolean, required: true, default: false },
   },
   {
     timestamps: true,
