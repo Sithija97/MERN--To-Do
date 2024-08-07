@@ -2,9 +2,10 @@ import {
   ChevronRight,
   House,
   CirclePlus,
-  SlidersHorizontal,
-  NotebookPen,
+  // SlidersHorizontal,
+  // NotebookPen,
   Trash,
+  Archive,
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
@@ -28,7 +29,9 @@ export const SideNavBar = () => {
   const mobileWidth = onlyWidth < 768;
 
   const navigateToHome = () => navigate("/");
-  const navigateToNotes = () => navigate("/notes");
+  const navigateToArchive = () => navigate("/archive");
+  const navigateToTrash = () => navigate("/trash");
+  // const navigateToNotes = () => navigate("/notes");
 
   return (
     <div className={`relative px-3 pb-10 pt-24 ${!isCollapsed && "min-w-64"}`}>
@@ -75,10 +78,18 @@ export const SideNavBar = () => {
           //   onclick: handleAddFilters,
           // },
           {
+            title: "Archive",
+            href: "#",
+            icon: Archive,
+            variant: "ghost",
+            onclick: navigateToArchive,
+          },
+          {
             title: "Trash",
             href: "#",
             icon: Trash,
             variant: "ghost",
+            onclick: navigateToTrash,
           },
         ]}
       />

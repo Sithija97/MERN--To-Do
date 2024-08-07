@@ -49,19 +49,21 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
   const handleAddNoteModal = () => setIsOpenEditNote(!isOpenEditNote);
   const handleDeleteModal = () => setIsOpenDelete(!isOpenDelete);
 
-  const handleArchiveNote = () => {
-    updateNote({ ...selectedNote, isTrashed: false, hasArchived: true });
+  const handleArchiveNote = async () => {
+    await updateNote({ ...selectedNote, isTrashed: false, hasArchived: true });
     toast({
       title: "This note has been moved to archived notes",
       description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+      duration: 1500,
     });
   };
 
-  const handleTrashNote = () => {
-    updateNote({ ...selectedNote, isTrashed: true, hasArchived: false });
+  const handleTrashNote = async () => {
+    await updateNote({ ...selectedNote, isTrashed: true, hasArchived: false });
     toast({
       title: "This note has been moved to trash",
       description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+      duration: 1500,
     });
   };
 
@@ -187,7 +189,7 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <TooltipContent>Snooze</TooltipContent>
+                <TooltipContent>Set Reminder</TooltipContent>
               </Tooltip>
             </div>
             <div className="ml-auto flex items-center gap-2">
