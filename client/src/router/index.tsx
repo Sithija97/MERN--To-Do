@@ -1,5 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, Notes, RootPage, SignInPage, SignUpPage } from "../pages";
+import {
+  Archive,
+  Home,
+  Notes,
+  RootPage,
+  SignInPage,
+  SignUpPage,
+  Trash,
+} from "../pages";
 
 export const router = createBrowserRouter([
   { path: "/sign-in/*", element: <SignInPage /> },
@@ -9,7 +17,9 @@ export const router = createBrowserRouter([
     element: <RootPage />,
     children: [
       { path: "/", element: <Home /> },
-      // { path: "/notes", element: <Notes /> },
+      { path: "/archive", element: <Archive /> },
+      { path: "/trash", element: <Trash /> },
+      { path: "/notes", element: <Notes /> },
     ],
   },
 ]);

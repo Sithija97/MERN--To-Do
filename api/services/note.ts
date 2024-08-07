@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Note } from "../models/index.js";
-import { Note as INote } from "../interfaces/note.js";
+import { Note as INote } from "../interfaces/index.js";
 
 export const noteService = {
   async getAllNotes() {

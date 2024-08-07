@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { noteService } from "../services/note.js";
-import { Note } from "../interfaces/note.js";
+import { Note } from "../interfaces/index.js";
 
 // Get all notes
 export const getNotes = asyncHandler(async (req: Request, res: Response) => {

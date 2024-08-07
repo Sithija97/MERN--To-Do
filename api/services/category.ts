@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Category } from "../models/index.js";
-import { Category as ICategory } from "../interfaces/category.js";
+import { Category as ICategory } from "../interfaces/index.js";
 
 export const categoryService = {
   async getAllCategories() {

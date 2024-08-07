@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
-import { Category } from "../interfaces/category.js";
+import { Category } from "../interfaces/index.js";
 import { categoryService } from "../services/category.js";
 
 // Get all categories

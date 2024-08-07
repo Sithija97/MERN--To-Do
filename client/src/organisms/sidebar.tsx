@@ -6,6 +6,7 @@ import {
   // NotebookPen,
   Trash,
   Archive,
+  SlidersHorizontal,
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
@@ -70,13 +71,13 @@ export const SideNavBar = () => {
             variant: "ghost",
             onclick: handleAddCategory,
           },
-          // {
-          //   title: "Filters",
-          //   href: "#",
-          //   icon: SlidersHorizontal,
-          //   variant: "ghost",
-          //   onclick: handleAddFilters,
-          // },
+          {
+            title: "Filters",
+            href: "#",
+            icon: SlidersHorizontal,
+            variant: "ghost",
+            onclick: handleAddFilters,
+          },
           {
             title: "Archive",
             href: "#",
