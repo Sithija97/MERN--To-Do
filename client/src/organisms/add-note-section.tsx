@@ -79,22 +79,23 @@ export const AddNoteSection = ({
     }));
   };
 
-  const handleAddNote = (
+  const handleAddNote = async (
     e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
     if (!isAddNoteDisabled) {
-      addNewNote(formData);
+      await addNewNote(formData);
       setFormData(initialState);
       toast({
         title: "Note has been successfully created.",
         description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+        duration: 1500,
       });
       onClose();
     }
   };
 
-  const handleUpdateNote = (
+  const handleUpdateNote = async (
     e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
@@ -106,12 +107,12 @@ export const AddNoteSection = ({
         category: formData.category,
       };
 
-      updateNote(updatedNote);
+      await updateNote(updatedNote);
       dispatch(setNote(updatedNote));
-      setFormData(initialState);
       toast({
         title: "Note has been successfully updated.",
         description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
+        duration: 1500,
       });
       onClose();
     }
@@ -157,7 +158,8 @@ export const AddNoteSection = ({
                   htmlFor="mute"
                   className="flex items-center gap-2 text-xs font-normal"
                 >
-                  <Switch id="mute" aria-label="Mute thread" /> Mute this thread
+                  <Switch id="mute" aria-label="Mute thread" /> Add filters to
+                  the note
                 </Label>
               </div>
             </div>
