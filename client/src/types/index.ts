@@ -3,6 +3,11 @@ export type Category = {
   title: string;
 };
 
+export type Filter = {
+  _id: string;
+  title: string;
+};
+
 export type Note = {
   _id: string;
   title: string;
@@ -10,7 +15,7 @@ export type Note = {
   categoryId: Category;
   userId: string;
   userName: string;
-  filters: string[];
+  filters: Filter[];
   hasReminder: boolean;
   isTrashed: boolean;
   hasArchived: boolean;

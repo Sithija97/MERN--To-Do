@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { logEvents, logger } from "./middleware/logger.js";
 import { errorHandler } from "./middleware/errorHandler.js";
-import { categoryRouter, noteRouter } from "./routes/index.js";
+import { categoryRouter, filterRouter, noteRouter } from "./routes/index.js";
 import { corsOptions } from "./config/cors-options.js";
 import {
   ClerkExpressRequireAuth,
@@ -37,7 +37,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/category", categoryRouter);
-
+app.use("/api/filter", filterRouter);
 app.use("/api/note", noteRouter);
 
 // Use the lax middleware that returns an empty auth object when unauthenticated

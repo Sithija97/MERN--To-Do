@@ -9,6 +9,10 @@ export const noteService = {
         path: "categoryId",
         select: "-__v",
       })
+      .populate({
+        path: "filters",
+        select: "-__v",
+      })
       .lean();
     return notes;
   },
@@ -18,6 +22,10 @@ export const noteService = {
     const note = await Note.findOne({ _id: objectId }, { __v: 0 })
       .populate({
         path: "categoryId",
+        select: "-__v",
+      })
+      .populate({
+        path: "filters",
         select: "-__v",
       })
       .lean();
