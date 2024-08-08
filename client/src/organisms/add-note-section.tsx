@@ -120,7 +120,7 @@ export const AddNoteSection = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md md:max-w-3xl">
+      <DialogContent className="sm:max-w-md md:max-w-3xl max-h-[600px]">
         <DialogHeader>
           <DialogTitle>{`${
             type === AddNoteModalType.NEW ? "Add" : "Edit"
@@ -131,7 +131,7 @@ export const AddNoteSection = ({
         </DialogHeader>
         <div className="p-4">
           <form>
-            <div className="grid gap-4">
+            <div className="grid gap-4 overflow-y-auto">
               <div className="flex items-center gap-2">
                 <Input
                   placeholder="Title"
