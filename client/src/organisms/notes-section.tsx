@@ -13,7 +13,19 @@ export const NotesSection = () => {
   const { userId } = useAuth();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const handleAddNote = () => setIsOpen(!isOpen);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredItems = notes.filter(
+    (note: Note) =>
+      note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      note.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <Tabs defaultValue="all">
@@ -33,19 +45,23 @@ export const NotesSection = () => {
       </div>
       <SelectSeparator />
 
-      <SearchInput openAddNote={handleAddNote} />
+      <SearchInput
+        openAddNote={handleAddNote}
+        search={searchQuery}
+        handleSearch={handleSearchChange}
+      />
 
       <AddNoteSection isOpen={isOpen} onClose={handleAddNote} />
 
       <TabsContent value="all" className="m-0">
-        <NoteList items={notes} />
+        <NoteList items={filteredItems} />
       </TabsContent>
       <TabsContent value="unread" className="m-0">
         <NoteList
           items={
             notes &&
             isSuccess &&
-            notes.filter((item: Note) => item.userId === userId)
+            filteredItems.filter((item: Note) => item.userId === userId)
           }
         />
       </TabsContent>

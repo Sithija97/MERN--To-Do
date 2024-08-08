@@ -73,7 +73,7 @@ export const AddCategorySection = ({ isOpen, onClose }: IProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md xl:max-w-fit">
-        <form onSubmit={handleAddCategory} className="flex flex-col gap-3">
+        <form onSubmit={handleAddCategory} className="flex flex-col gap-5">
           <DialogHeader>
             <DialogTitle>Create Category</DialogTitle>
             <DialogDescription>

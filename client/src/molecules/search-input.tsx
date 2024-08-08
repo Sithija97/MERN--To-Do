@@ -3,16 +3,23 @@ import { Input } from "../attoms/ui/input";
 import { Button } from "../attoms/ui/button";
 
 type IProps = {
+  search: string;
   openAddNote: () => void;
+  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const SearchInput = ({ openAddNote }: IProps) => {
+export const SearchInput = ({ search, openAddNote, handleSearch }: IProps) => {
   return (
     <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <form>
         <div className="relative">
           <Search className="absolute left-2 top-3 h-4 w-4 text-muted-foreground bg-white" />
-          <Input placeholder="Search" className="pl-8" />
+          <Input
+            placeholder="Search"
+            className="pl-8"
+            value={search}
+            onChange={handleSearch}
+          />
         </div>
       </form>
 

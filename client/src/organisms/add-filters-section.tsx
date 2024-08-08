@@ -20,8 +20,9 @@ import { toast } from "../attoms/ui/use-toast";
 import { Filter } from "../types";
 import { isEmptyArray } from "../utils";
 import { Badge } from "../attoms/ui/badge";
-import { LoaderCircle, X } from "lucide-react";
+import { Info, LoaderCircle, X } from "lucide-react";
 import { format } from "date-fns";
+import { Alert, AlertDescription } from "../attoms/ui/alert";
 
 type IProps = {
   isOpen: boolean;
@@ -71,13 +72,21 @@ export const AddFiltersSection = ({ isOpen, onClose }: IProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md xl:max-w-fit">
-        <form onSubmit={handleAddFilter} className="flex flex-col gap-3">
+        <form onSubmit={handleAddFilter} className="flex flex-col gap-5">
           <DialogHeader>
             <DialogTitle>Apply Filters</DialogTitle>
             <DialogDescription>
               Narrow down your search results by selecting specific criteria.
             </DialogDescription>
           </DialogHeader>
+
+          <Alert className="py-2">
+            <AlertDescription className="flex items-center gap-2">
+              <Info className="h-4 w-4" />
+              Here you get only the filters created by you.
+            </AlertDescription>
+          </Alert>
+
           <div className="grid grid-cols-6 gap-1 w-full">
             {!isEmptyArray(filters) &&
               filters.map((filter: Filter) => (
