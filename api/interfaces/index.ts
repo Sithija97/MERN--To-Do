@@ -9,6 +9,7 @@ export interface Category {
 export interface Filter {
   id: number;
   title: string;
+  userId: string;
 }
 
 export interface Note {

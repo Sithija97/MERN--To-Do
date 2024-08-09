@@ -2,10 +2,16 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { Filter } from "../interfaces/index.js";
 import { filterService } from "../services/filter.js";
+import jwt from "jsonwebtoken";
 
 // Get all filters
 export const getFilters = asyncHandler(async (req: Request, res: Response) => {
-  const filters = await filterService.getAllFilters();
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  const decodedToken = jwt.decode(token);
+  const userId = decodedToken.sub;
+
+  const filters = await filterService.getAllFilters(userId);
   res.status(200).json(filters);
 });
 

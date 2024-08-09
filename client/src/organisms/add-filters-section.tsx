@@ -23,6 +23,7 @@ import { Badge } from "../attoms/ui/badge";
 import { Info, LoaderCircle, X } from "lucide-react";
 import { format } from "date-fns";
 import { Alert, AlertDescription } from "../attoms/ui/alert";
+import { useAuth } from "@clerk/clerk-react";
 
 type IProps = {
   isOpen: boolean;
@@ -30,11 +31,12 @@ type IProps = {
 };
 
 export const AddFiltersSection = ({ isOpen, onClose }: IProps) => {
+  const { userId } = useAuth();
   const [addNewFilter] = useAddNewFilterMutation();
   const [deleteFilter] = useDeleteFilterMutation();
   const { data: filters = [] } = useGetFiltersQuery({});
 
-  const initialState = { title: "" };
+  const initialState = { title: "", userId };
   const [filter, setFilter] = useState(initialState);
   const [deletingFilterId, setDeletingFilterId] = useState<string | null>(null);
 

@@ -61,7 +61,7 @@ export function NoteList({ items }: NoteListProps) {
                 {item.content.substring(0, 300)}
               </div>
               {item.filters.length ? (
-                <div className="flex items-center gap-2">
+                <div className="grid grid-cols-8 gap-2">
                   {item.filters.map((label: Filter) => (
                     <Badge
                       key={label._id}

@@ -40,11 +40,14 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
   const today = new Date();
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenEditNote, setIsOpenEditNote] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(new Date());
   const [updateNote] = useUpdateNoteMutation();
 
   const { selectedNote } = useAppSelector(
     (state: RootState) => state.baseState
   );
+
+  console.log(note);
 
   const handleAddNoteModal = () => setIsOpenEditNote(!isOpenEditNote);
   const handleDeleteModal = () => setIsOpenDelete(!isOpenDelete);
@@ -185,7 +188,11 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
                       </div>
                     </div>
                     <div className="p-2">
-                      <Calendar />
+                      <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                      />
                     </div>
                   </PopoverContent>
                 </Popover>

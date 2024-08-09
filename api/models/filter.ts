@@ -7,6 +7,10 @@ const filterSchema = new Schema<IFilter>({
     required: true,
     unique: true,
   },
+  userId: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Filter = model("Filter", filterSchema);

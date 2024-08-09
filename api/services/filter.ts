@@ -3,8 +3,8 @@ import { Filter } from "../models/index.js";
 import { Filter as IFilter } from "../interfaces/index.js";
 
 export const filterService = {
-  async getAllFilters() {
-    const filters = await Filter.find({}, { __v: 0 }).lean();
+  async getAllFilters(userId: string) {
+    const filters = await Filter.find({ userId }, { __v: 0 }).lean();
     return filters;
   },
 

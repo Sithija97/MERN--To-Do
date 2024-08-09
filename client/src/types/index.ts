@@ -6,6 +6,7 @@ export type Category = {
 export type Filter = {
   _id: string;
   title: string;
+  userId: string;
 };
 
 export type Note = {

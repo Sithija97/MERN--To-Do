@@ -16,6 +16,7 @@ export const NotesSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddNote = () => setIsOpen(!isOpen);
+  const clearSearch = () => setSearchQuery("");
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -48,6 +49,7 @@ export const NotesSection = () => {
       <SearchInput
         openAddNote={handleAddNote}
         search={searchQuery}
+        clearSearch={clearSearch}
         handleSearch={handleSearchChange}
       />
 

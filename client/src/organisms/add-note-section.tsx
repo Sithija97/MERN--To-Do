@@ -21,7 +21,7 @@ import {
 } from "../store/notes-slice";
 import { AddNoteModalType } from "../enums";
 import { RootState, useAppDispatch, useAppSelector } from "../store/store";
-import { setNote } from "../store/base-slice";
+import { clearNote } from "../store/base-slice";
 import { format } from "date-fns";
 import { toast } from "../attoms/ui/use-toast";
 import { useGetFiltersQuery } from "../store/filter-slice";
@@ -54,7 +54,7 @@ export const AddNoteSection = ({
   type IState = {
     title: string;
     content: string;
-    category: string;
+    categoryId: string;
     userId: string | null | undefined;
     userName: string | null | undefined;
     filters: string[] | any;
@@ -63,7 +63,7 @@ export const AddNoteSection = ({
   const initialState: IState = {
     title: "",
     content: "",
-    category: "general",
+    categoryId: "66b111f33123378832c2a3b2",
     userId,
     userName: user?.fullName,
     filters: [],
@@ -76,10 +76,10 @@ export const AddNoteSection = ({
     setFormData({
       title: type === AddNoteModalType.EDIT ? selectedNote.title : "",
       content: type === AddNoteModalType.EDIT ? selectedNote.content : "",
-      category:
+      categoryId:
         type === AddNoteModalType.EDIT
-          ? selectedNote.categoryId.title.toLowerCase()
-          : "general",
+          ? selectedNote.categoryId._id
+          : "66b111f33123378832c2a3b2",
       userId,
       userName: user?.fullName,
       filters:
@@ -110,10 +110,10 @@ export const AddNoteSection = ({
     }));
   };
 
-  const handleCategoryChange = (category: string) => {
+  const handleCategoryChange = (categoryId: string) => {
     setFormData((prevData) => ({
       ...prevData,
-      category,
+      categoryId,
     }));
   };
 
@@ -150,12 +150,12 @@ export const AddNoteSection = ({
         ...selectedNote,
         title: formData.title,
         content: formData.content,
-        category: formData.category,
+        categoryId: formData.categoryId,
         filters: formData.filters,
       };
 
       await updateNote(updatedNote);
-      dispatch(setNote(updatedNote));
+      dispatch(clearNote());
       toast({
         title: "Note has been successfully updated.",
         description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
@@ -168,7 +168,7 @@ export const AddNoteSection = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md md:max-w-3xl max-h-[600px]">
+      <DialogContent className="sm:max-w-md xl:max-w-fit min-w-[700px] max-h-[600px]">
         <DialogHeader>
           <DialogTitle>{`${
             type === AddNoteModalType.NEW ? "Add" : "Edit"
@@ -187,7 +187,7 @@ export const AddNoteSection = ({
                 onChange={handleInputChange}
               />
               <CategoryDropDown
-                category={formData.category}
+                category={formData.categoryId}
                 setCategory={handleCategoryChange}
               />
             </div>
