@@ -47,10 +47,7 @@ export const CategoryDropDown = ({
           {isSuccess &&
             !isEmptyArray(categories) &&
             categories.map((category: Category) => (
-              <DropdownMenuRadioItem
-                key={category._id}
-                value={category.title.toLowerCase()}
-              >
+              <DropdownMenuRadioItem key={category._id} value={category._id}>
                 {category.title}
               </DropdownMenuRadioItem>
             ))}

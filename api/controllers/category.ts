@@ -65,6 +65,7 @@ export const deleteCategory = asyncHandler(
       res.status(404).json({ message: "Category not found" });
       return;
     }
+    // need to add another condition - if the category has notes under that it shouldn't be deletable
     res.status(204).send();
   }
 );

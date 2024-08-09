@@ -26,8 +26,9 @@ const noteSchema = new Schema<INote>(
       required: true,
     },
     filters: {
-      type: [String],
-      default: ["general", "work"],
+      type: [Schema.Types.ObjectId],
+      ref: "Filter",
+      default: [],
     },
     hasReminder: { type: Boolean, required: true, default: false },
     reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
@@ -38,5 +39,16 @@ const noteSchema = new Schema<INote>(
     timestamps: true,
   }
 );
+
+noteSchema.pre("save", async function (next) {
+  if (!this.filters.length) {
+    this.filters.push(
+      new Types.ObjectId(
+        "66b3934cb22961bc84b9e3df"
+      ) as unknown as Schema.Types.ObjectId
+    );
+  }
+  next();
+});
 
 export const Note = model("Note", noteSchema);

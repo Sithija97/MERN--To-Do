@@ -1,11 +1,13 @@
 import { formatDistanceToNow } from "date-fns";
 import { ScrollArea } from "../attoms/ui/scroll-area";
 import { cn } from "../lib/utils";
-import { Badge } from "../attoms/ui/badge";
-import { ComponentProps } from "react";
-import { Note } from "../types";
+// import { Badge } from "../attoms/ui/badge";
+// import { ComponentProps } from "react";
+import { Filter, Note } from "../types";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { selectedNote, setNote } from "../store/base-slice";
+import { Badge } from "../attoms/ui/badge";
+import { ComponentProps } from "react";
 
 type NoteListProps = {
   items: Note[];
@@ -59,13 +61,15 @@ export function NoteList({ items }: NoteListProps) {
                 {item.content.substring(0, 300)}
               </div>
               {item.filters.length ? (
-                <div className="flex items-center gap-2">
-                  {item.filters.map((label) => (
+                <div className="grid grid-cols-8 gap-2">
+                  {item.filters.map((label: Filter) => (
                     <Badge
-                      key={label}
-                      variant={getBadgeVariantFromLabel(label)}
+                      key={label._id}
+                      variant={getBadgeVariantFromLabel(
+                        label.title.toLowerCase()
+                      )}
                     >
-                      {label}
+                      {label.title.toLowerCase()}
                     </Badge>
                   ))}
                 </div>

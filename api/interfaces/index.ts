@@ -6,6 +6,12 @@ export interface Category {
   title: string;
 }
 
+export interface Filter {
+  id: number;
+  title: string;
+  userId: string;
+}
+
 export interface Note {
   id: number;
   title: string;
@@ -13,7 +19,7 @@ export interface Note {
   categoryId: Schema.Types.ObjectId;
   userId: String;
   userName: String;
-  filters: string[];
+  filters: Schema.Types.ObjectId[];
   hasReminder: boolean;
   reminder: {
     dateTime: Date;
