@@ -25,7 +25,6 @@ export const CategoryDropDown = ({
   setCategory,
 }: IProps) => {
   const { data: categories = [], isSuccess } = useGetCategoriesQuery({});
-  console.log(category);
   const [position, setPosition] = useState(category);
 
   const handleCategorySelect = (value: string) => {

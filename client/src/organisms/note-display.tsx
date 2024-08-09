@@ -31,13 +31,13 @@ import { useUpdateNoteMutation } from "../store/notes-slice";
 import { RootState, useAppSelector } from "../store/store";
 import { AddNoteSection } from "./add-note-section";
 import { toast } from "../attoms/ui/use-toast";
+import { Input } from "../attoms/ui/input";
 
 type NoteDisplayProps = {
   note: Note;
 };
 
 export const NoteDisplay = ({ note }: NoteDisplayProps) => {
-  const today = new Date();
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenEditNote, setIsOpenEditNote] = useState(false);
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -142,55 +142,19 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
                     </TooltipTrigger>
                   </PopoverTrigger>
                   <PopoverContent className="flex w-auto p-0">
-                    <div className="flex flex-col gap-2 border-r px-2 py-4">
-                      <div className="px-4 text-sm font-medium">
-                        Snooze until
-                      </div>
-                      <div className="grid min-w-[250px] gap-1">
-                        <Button
-                          variant="ghost"
-                          className="justify-start font-normal"
-                        >
-                          Later today{" "}
-                          <span className="ml-auto text-muted-foreground">
-                            {format(addHours(today, 4), "E, h:m b")}
-                          </span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="justify-start font-normal"
-                        >
-                          Tomorrow
-                          <span className="ml-auto text-muted-foreground">
-                            {format(addDays(today, 1), "E, h:m b")}
-                          </span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="justify-start font-normal"
-                        >
-                          This weekend
-                          <span className="ml-auto text-muted-foreground">
-                            {format(nextSaturday(today), "E, h:m b")}
-                          </span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="justify-start font-normal"
-                        >
-                          Next week
-                          <span className="ml-auto text-muted-foreground">
-                            {format(addDays(today, 7), "E, h:m b")}
-                          </span>
-                        </Button>
-                      </div>
-                    </div>
                     <div className="p-2">
                       <Calendar
                         mode="single"
                         selected={date}
                         onSelect={setDate}
                       />
+                      <div className="px-4 text-sm font-medium">
+                        Snooze time
+                      </div>
+                      <Input type="time" />
+                      <Button variant={"ghost"} className="w-full mt-2">
+                        Set Reminder
+                      </Button>
                     </div>
                   </PopoverContent>
                 </Popover>
@@ -275,33 +239,6 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
             <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
               {note.content}
             </div>
-            {/* <Separator className="mt-auto" /> */}
-            {/* <div className="p-4">
-            <form>
-              <div className="grid gap-4">
-                <Textarea
-                  className="p-4 min-h-80"
-                  placeholder={`Reply ${mail.name}...`}
-                />
-                <div className="flex items-center">
-                  <Label
-                    htmlFor="mute"
-                    className="flex items-center gap-2 text-xs font-normal"
-                  >
-                    <Switch id="mute" aria-label="Mute thread" /> Mute this
-                    thread
-                  </Label>
-                  <Button
-                    onClick={(e) => e.preventDefault()}
-                    size="sm"
-                    className="ml-auto"
-                  >
-                    Add Note
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div> */}
           </div>
         ) : (
           <div className="p-8 text-center text-muted-foreground">
