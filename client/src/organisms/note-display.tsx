@@ -47,8 +47,6 @@ export const NoteDisplay = ({ note }: NoteDisplayProps) => {
     (state: RootState) => state.baseState
   );
 
-  console.log(note);
-
   const handleAddNoteModal = () => setIsOpenEditNote(!isOpenEditNote);
   const handleDeleteModal = () => setIsOpenDelete(!isOpenDelete);
 

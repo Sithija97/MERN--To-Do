@@ -130,6 +130,7 @@ export const AddNoteSection = ({
     e.preventDefault();
     if (!isAddNoteDisabled) {
       await addNewNote(formData);
+      dispatch(clearNote());
       setFormData(initialState);
       toast({
         title: "Note has been successfully created.",
