@@ -34,7 +34,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
+      <DataTableColumnHeader column={column} title="Note" />
     ),
     cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
     enableSorting: false,

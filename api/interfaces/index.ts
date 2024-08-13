@@ -27,4 +27,5 @@ export interface Note {
   };
   isTrashed: boolean;
   hasArchived: boolean;
+  priority: string;
 }

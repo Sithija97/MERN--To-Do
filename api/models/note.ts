@@ -1,5 +1,6 @@
 import { model, Schema, Types } from "mongoose";
 import { Note as INote } from "../interfaces/index.js";
+import { NoteStatus } from "../enums/index.js";
 
 const noteSchema = new Schema<INote>(
   {
@@ -34,6 +35,7 @@ const noteSchema = new Schema<INote>(
     reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
     isTrashed: { type: Boolean, required: true, default: false },
     hasArchived: { type: Boolean, required: true, default: false },
+    priority: { type: String, required: true, default: NoteStatus.IDLE },
   },
   {
     timestamps: true,

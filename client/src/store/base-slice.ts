@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { InitialBaseState } from "../types";
 import { RootState } from "./store";
+import { NoteStatus } from "../enums";
 
 const initialState: InitialBaseState = {
   selectedNote: {
@@ -17,6 +18,7 @@ const initialState: InitialBaseState = {
     hasReminder: false,
     isTrashed: false,
     hasArchived: false,
+    priority: NoteStatus.IDLE,
     createdAt: "",
     updatedAt: "",
   },

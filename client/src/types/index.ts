@@ -20,6 +20,7 @@ export type Note = {
   hasReminder: boolean;
   isTrashed: boolean;
   hasArchived: boolean;
+  priority: string;
   createdAt: string;
   updatedAt: string;
 };

@@ -19,7 +19,7 @@ import {
   useAddNewNoteMutation,
   useUpdateNoteMutation,
 } from "../store/notes-slice";
-import { AddNoteModalType } from "../enums";
+import { AddNoteModalType, NoteStatus } from "../enums";
 import { RootState, useAppDispatch, useAppSelector } from "../store/store";
 import { clearNote } from "../store/base-slice";
 import { format } from "date-fns";
@@ -27,6 +27,7 @@ import { toast } from "../attoms/ui/use-toast";
 import { useGetFiltersQuery } from "../store/filter-slice";
 import { ToggleGroup, ToggleGroupItem } from "../attoms/ui/toggle-group";
 import { Filter } from "../types";
+import { PriorityDropDown } from "../molecules";
 
 type IProps = {
   type?: AddNoteModalType;
@@ -58,6 +59,7 @@ export const AddNoteSection = ({
     userId: string | null | undefined;
     userName: string | null | undefined;
     filters: string[] | any;
+    priority: string;
   };
 
   const initialState: IState = {
@@ -67,6 +69,7 @@ export const AddNoteSection = ({
     userId,
     userName: user?.fullName,
     filters: [],
+    priority: NoteStatus.IDLE,
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -74,8 +77,14 @@ export const AddNoteSection = ({
 
   useEffect(() => {
     setFormData({
-      title: type === AddNoteModalType.EDIT ? selectedNote.title : "",
-      content: type === AddNoteModalType.EDIT ? selectedNote.content : "",
+      title:
+        type === AddNoteModalType.EDIT
+          ? selectedNote.title
+          : initialState.title,
+      content:
+        type === AddNoteModalType.EDIT
+          ? selectedNote.content
+          : initialState.content,
       categoryId:
         type === AddNoteModalType.EDIT
           ? selectedNote.categoryId._id
@@ -86,6 +95,10 @@ export const AddNoteSection = ({
         type === AddNoteModalType.EDIT
           ? selectedNote.filters.map((filter) => filter._id)
           : [],
+      priority:
+        type === AddNoteModalType.EDIT
+          ? selectedNote.priority
+          : initialState.priority,
     });
 
     return () => {
@@ -114,6 +127,13 @@ export const AddNoteSection = ({
     setFormData((prevData) => ({
       ...prevData,
       categoryId,
+    }));
+  };
+
+  const handlePriorityChange = (priority: string) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      priority,
     }));
   };
 
@@ -153,6 +173,7 @@ export const AddNoteSection = ({
         content: formData.content,
         categoryId: formData.categoryId,
         filters: formData.filters,
+        priority: formData.priority,
       };
 
       await updateNote(updatedNote);
@@ -190,6 +211,10 @@ export const AddNoteSection = ({
               <CategoryDropDown
                 category={formData.categoryId}
                 setCategory={handleCategoryChange}
+              />
+              <PriorityDropDown
+                priority={formData.priority}
+                setPriority={handlePriorityChange}
               />
             </div>
 

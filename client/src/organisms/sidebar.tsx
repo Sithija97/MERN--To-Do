@@ -7,6 +7,7 @@ import {
   Trash,
   Archive,
   SlidersHorizontal,
+  NotebookPen,
 } from "lucide-react";
 import { useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
@@ -32,7 +33,7 @@ export const SideNavBar = () => {
   const navigateToHome = () => navigate("/");
   const navigateToArchive = () => navigate("/archive");
   const navigateToTrash = () => navigate("/trash");
-  // const navigateToNotes = () => navigate("/notes");
+  const navigateToNotes = () => navigate("/notes");
 
   return (
     <div className={`relative px-3 pb-10 pt-24 ${!isCollapsed && "min-w-64"}`}>
@@ -57,13 +58,13 @@ export const SideNavBar = () => {
             variant: "default",
             onclick: navigateToHome,
           },
-          // {
-          //   title: "Notes",
-          //   href: "/notes",
-          //   icon: NotebookPen,
-          //   variant: "ghost",
-          //   onclick: navigateToNotes,
-          // },
+          {
+            title: "Notes",
+            href: "#",
+            icon: NotebookPen,
+            variant: "ghost",
+            onclick: navigateToNotes,
+          },
           {
             title: "Categories",
             href: "#",
