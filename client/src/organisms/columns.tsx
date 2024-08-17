@@ -6,6 +6,14 @@ import { labels, priorities, statuses } from "../data/tasks";
 import { Badge } from "../attoms/ui/badge";
 import { DataTableRowActions } from "./data-table-row-actions";
 
+const formatNoteId = (id: string) => {
+  // Extract the last 4 characters of the ID
+  const lastFourChars = id.slice(-4);
+
+  // Format and return the desired string
+  return `NOTE-${lastFourChars}`;
+};
+
 export const columns: ColumnDef<Task>[] = [
   {
     id: "select",
@@ -32,11 +40,13 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "_id",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Note" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{formatNoteId(row.getValue("_id"))}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },

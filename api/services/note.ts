@@ -13,6 +13,7 @@ export const noteService = {
         path: "filters",
         select: "-__v",
       })
+      .sort({ createdAt: -1 })
       .lean();
     return notes;
   },

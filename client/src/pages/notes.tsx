@@ -1,5 +1,8 @@
 import { NotesTemplate } from "../templates";
+import { useGetNotesQuery } from "../store/notes-slice";
 
 export const Notes = () => {
-  return <NotesTemplate />;
+  const { data: notes = [] } = useGetNotesQuery({});
+
+  return <NotesTemplate notes={notes} />;
 };
