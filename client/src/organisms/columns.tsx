@@ -6,6 +6,14 @@ import { labels, priorities, statuses } from "../data/tasks";
 import { Badge } from "../attoms/ui/badge";
 import { DataTableRowActions } from "./data-table-row-actions";
 
+const formatNoteId = (id: string) => {
+  // Extract the last 4 characters of the ID
+  const lastFourChars = id.slice(-4);
+
+  // Format and return the desired string
+  return `NOTE-${lastFourChars}`;
+};
+
 export const columns: ColumnDef<Task>[] = [
   {
     id: "select",
@@ -32,11 +40,13 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "_id",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Note" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{formatNoteId(row.getValue("_id"))}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -58,33 +68,33 @@ export const columns: ColumnDef<Task>[] = [
       );
     },
   },
-  {
-    accessorKey: "status",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
-    ),
-    cell: ({ row }) => {
-      const status = statuses.find(
-        (status) => status.value === row.getValue("status")
-      );
+  // {
+  //   accessorKey: "status",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Status" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const status = statuses.find(
+  //       (status) => status.value === row.getValue("status")
+  //     );
 
-      if (!status) {
-        return null;
-      }
+  //     if (!status) {
+  //       return null;
+  //     }
 
-      return (
-        <div className="flex w-[100px] items-center">
-          {status.icon && (
-            <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
-          <span>{status.label}</span>
-        </div>
-      );
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
-  },
+  //     return (
+  //       <div className="flex w-[100px] items-center">
+  //         {status.icon && (
+  //           <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+  //         )}
+  //         <span>{status.label}</span>
+  //       </div>
+  //     );
+  //   },
+  //   filterFn: (row, id, value) => {
+  //     return value.includes(row.getValue(id));
+  //   },
+  // },
   {
     accessorKey: "priority",
     header: ({ column }) => (

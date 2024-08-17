@@ -69,7 +69,7 @@ export const AddNoteSection = ({
     userId,
     userName: user?.fullName,
     filters: [],
-    priority: NoteStatus.IDLE,
+    priority: NoteStatus.LOW,
   };
 
   const [formData, setFormData] = useState(initialState);

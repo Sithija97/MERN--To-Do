@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { selectedNote, setNote } from "../store/base-slice";
 import { Badge } from "../attoms/ui/badge";
 import { ComponentProps } from "react";
+import { ActiveIcon } from "../attoms/ui/active-icon";
 
 type NoteListProps = {
   items: Note[];
@@ -38,9 +39,7 @@ export function NoteList({ items }: NoteListProps) {
                 <div className="flex items-center">
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">{item.title}</div>
-                    {/* {!item.read && ( */}
-                    <span className="flex h-2 w-2 rounded-full bg-blue-600" />
-                    {/* )} */}
+                    <ActiveIcon item={item} />
                   </div>
                   <div
                     className={cn(

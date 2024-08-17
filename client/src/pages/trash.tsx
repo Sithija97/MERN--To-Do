@@ -1,3 +1,10 @@
+import { useGetNotesQuery } from "../store/notes-slice";
+import { TrashTemplate } from "../templates";
+import { Note } from "../types";
+
 export const Trash = () => {
-  return <div className="h-screen">Trash Page</div>;
+  const { data = [] } = useGetNotesQuery({});
+  const notes = data?.filter((item: Note) => item.isTrashed);
+
+  return <TrashTemplate notes={notes} />;
 };
