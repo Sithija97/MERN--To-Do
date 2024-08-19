@@ -5,7 +5,7 @@ import { Toaster } from "../attoms/ui/toaster";
 
 export const RootLayout = () => {
   return (
-    <section className={cn("h-screen w-full flex")}>
+    <section className={cn("min-h-screen w-full flex")}>
       {/* sidebar */}
       <div className=" bg-blue-800">
         <SideNavBar />
