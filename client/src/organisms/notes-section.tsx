@@ -31,7 +31,10 @@ export const NotesSection = () => {
   const filteredItems = notes.filter(
     (note: Note) =>
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      note.content.toLowerCase().includes(searchQuery.toLowerCase())
+      note.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      note.filters.some((filter) =>
+        filter.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
   );
 
   return (
