@@ -11,8 +11,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../attoms/ui/select";
-import { Button } from "../attoms/ui/button";
+} from "../atoms/ui/select";
+import { Button } from "../atoms/ui/button";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,21 +8,21 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../attoms/ui/dialog";
-import { Input } from "../attoms/ui/input";
-import { Label } from "../attoms/ui/label";
+} from "../atoms/ui/dialog";
+import { Input } from "../atoms/ui/input";
+import { Label } from "../atoms/ui/label";
 import {
   useAddNewFilterMutation,
   useDeleteFilterMutation,
   useGetFiltersQuery,
 } from "../store/filter-slice";
-import { toast } from "../attoms/ui/use-toast";
+import { toast } from "../atoms/ui/use-toast";
 import { Filter } from "../types";
 import { isEmptyArray } from "../utils";
-import { Badge } from "../attoms/ui/badge";
+import { Badge } from "../atoms/ui/badge";
 import { Info, LoaderCircle, X } from "lucide-react";
 import { format } from "date-fns";
-import { Alert, AlertDescription } from "../attoms/ui/alert";
+import { Alert, AlertDescription } from "../atoms/ui/alert";
 import { useAuth } from "@clerk/clerk-react";
 
 type IProps = {

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { cn } from "../lib/utils";
 import { SideNavBar } from "../organisms";
-import { Toaster } from "../attoms/ui/toaster";
+import { Toaster } from "../atoms/ui/toaster";
 
 export const RootLayout = () => {
   return (

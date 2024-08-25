@@ -1,10 +1,10 @@
 import * as React from "react";
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { Column } from "@tanstack/react-table";
-import { Popover, PopoverContent, PopoverTrigger } from "../attoms/ui/popover";
-import { Button } from "../attoms/ui/button";
-import { Separator } from "../attoms/ui/separator";
-import { Badge } from "../attoms/ui/badge";
+import { Popover, PopoverContent, PopoverTrigger } from "../atoms/ui/popover";
+import { Button } from "../atoms/ui/button";
+import { Separator } from "../atoms/ui/separator";
+import { Badge } from "../atoms/ui/badge";
 import {
   Command,
   CommandEmpty,
@@ -13,7 +13,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../attoms/ui/command";
+} from "../atoms/ui/command";
 import { cn } from "../lib/utils";
 
 interface DataTableFacetedFilterProps<TData, TValue> {

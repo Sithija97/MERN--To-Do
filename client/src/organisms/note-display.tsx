@@ -9,19 +9,19 @@ import {
   Trash,
   Trash2,
 } from "lucide-react";
-import { Separator } from "../attoms/ui/separator";
-import { Popover, PopoverContent, PopoverTrigger } from "../attoms/ui/popover";
+import { Separator } from "../atoms/ui/separator";
+import { Popover, PopoverContent, PopoverTrigger } from "../atoms/ui/popover";
 import { addDays, addHours, format, nextSaturday } from "date-fns";
-import { Calendar } from "../attoms/ui/calendar";
+import { Calendar } from "../atoms/ui/calendar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../attoms/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../attoms/ui/avatar";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../attoms/ui/tooltip";
-import { Button } from "../attoms/ui/button";
+} from "../atoms/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../atoms/ui/avatar";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../atoms/ui/tooltip";
+import { Button } from "../atoms/ui/button";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Note } from "../types";
 import { DeleteModal } from "./delete-modal";
@@ -30,8 +30,8 @@ import { useState } from "react";
 import { useUpdateNoteMutation } from "../store/notes-slice";
 import { RootState, useAppSelector } from "../store/store";
 import { AddNoteSection } from "./add-note-section";
-import { toast } from "../attoms/ui/use-toast";
-import { Input } from "../attoms/ui/input";
+import { toast } from "../atoms/ui/use-toast";
+import { Input } from "../atoms/ui/input";
 
 type NoteDisplayProps = {
   note: Note;

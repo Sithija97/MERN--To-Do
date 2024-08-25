@@ -1,9 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Task } from "../data/schema";
-import { Checkbox } from "../attoms/ui/checkbox";
+import { Checkbox } from "../atoms/ui/checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { labels, priorities, statuses } from "../data/tasks";
-import { Badge } from "../attoms/ui/badge";
+import { Badge } from "../atoms/ui/badge";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 const formatNoteId = (id: string) => {

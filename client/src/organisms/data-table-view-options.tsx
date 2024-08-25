@@ -7,8 +7,8 @@ import {
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from "../attoms/ui/dropdown-menu";
-import { Button } from "../attoms/ui/button";
+} from "../atoms/ui/dropdown-menu";
+import { Button } from "../atoms/ui/button";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;

@@ -12,8 +12,8 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../attoms/ui/dropdown-menu";
-import { Button } from "../attoms/ui/button";
+} from "../atoms/ui/dropdown-menu";
+import { Button } from "../atoms/ui/button";
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {

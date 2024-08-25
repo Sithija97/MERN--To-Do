@@ -1,6 +1,6 @@
 import { PlusIcon, Search, X } from "lucide-react";
-import { Input } from "../attoms/ui/input";
-import { Button } from "../attoms/ui/button";
+import { Input } from "../atoms/ui/input";
+import { Button } from "../atoms/ui/button";
 
 type IProps = {
   search: string;

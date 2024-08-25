@@ -1,5 +1,5 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../attoms/ui/tabs";
-import { SelectSeparator } from "../attoms/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../atoms/ui/tabs";
+import { SelectSeparator } from "../atoms/ui/select";
 import { NoteList } from "./note-list";
 import { SearchInput } from "../molecules";
 import { useGetNotesQuery } from "../store/notes-slice";
@@ -9,8 +9,14 @@ import { AddNoteSection } from "./add-note-section";
 import { useState } from "react";
 
 export const NotesSection = () => {
-  const { data: notes = [], isSuccess } = useGetNotesQuery({});
+  const {
+    data: notes = [],
+    isSuccess,
+    isLoading,
+    isFetching,
+  } = useGetNotesQuery({});
   const { userId } = useAuth();
+  console.log(userId);
 
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,7 +62,11 @@ export const NotesSection = () => {
       <AddNoteSection isOpen={isOpen} onClose={handleAddNote} />
 
       <TabsContent value="all" className="m-0">
-        <NoteList items={filteredItems} />
+        <NoteList
+          items={filteredItems}
+          isLoading={isLoading}
+          isFetching={isFetching}
+        />
       </TabsContent>
       <TabsContent value="unread" className="m-0">
         <NoteList
@@ -65,6 +75,8 @@ export const NotesSection = () => {
             isSuccess &&
             filteredItems.filter((item: Note) => item.userId === userId)
           }
+          isLoading={isLoading}
+          isFetching={isFetching}
         />
       </TabsContent>
     </Tabs>

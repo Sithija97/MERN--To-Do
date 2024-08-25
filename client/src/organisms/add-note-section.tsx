@@ -1,4 +1,4 @@
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -7,11 +7,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../attoms/ui/dialog";
-import { Input } from "../attoms/ui/input";
-import { Label } from "../attoms/ui/label";
-import { Textarea } from "../attoms/ui/textarea";
-import { Switch } from "../attoms/ui/switch";
+} from "../atoms/ui/dialog";
+import { Input } from "../atoms/ui/input";
+import { Label } from "../atoms/ui/label";
+import { Textarea } from "../atoms/ui/textarea";
+import { Switch } from "../atoms/ui/switch";
 import { CategoryDropDown } from "../molecules/category-dropdown";
 import { useEffect, useState } from "react";
 import { useAuth, useClerk } from "@clerk/clerk-react";
@@ -23,9 +23,9 @@ import { AddNoteModalType, NoteStatus } from "../enums";
 import { RootState, useAppDispatch, useAppSelector } from "../store/store";
 import { clearNote } from "../store/base-slice";
 import { format } from "date-fns";
-import { toast } from "../attoms/ui/use-toast";
+import { toast } from "../atoms/ui/use-toast";
 import { useGetFiltersQuery } from "../store/filter-slice";
-import { ToggleGroup, ToggleGroupItem } from "../attoms/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "../atoms/ui/toggle-group";
 import { Filter } from "../types";
 import { PriorityDropDown } from "../molecules";
 

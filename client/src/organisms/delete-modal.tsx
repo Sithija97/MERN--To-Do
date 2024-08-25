@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,7 +8,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../attoms/ui/dialog";
+} from "../atoms/ui/dialog";
 import { BaseTypes } from "../enums";
 import { useDeleteNoteMutation } from "../store/notes-slice";
 import { useAppDispatch, useAppSelector } from "../store/store";

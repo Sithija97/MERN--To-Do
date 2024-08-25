@@ -1,8 +1,8 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-import { Input } from "../attoms/ui/input";
+import { Input } from "../atoms/ui/input";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import { priorities, statuses } from "../data/tasks";
 import { DataTableViewOptions } from "./data-table-view-options";
 

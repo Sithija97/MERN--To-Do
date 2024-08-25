@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,7 +8,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../attoms/ui/dropdown-menu";
+} from "../atoms/ui/dropdown-menu";
 
 type IProps = {
   priority: string;

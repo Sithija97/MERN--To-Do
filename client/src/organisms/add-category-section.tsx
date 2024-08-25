@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../attoms/ui/button";
+import { Button } from "../atoms/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,18 +8,18 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../attoms/ui/dialog";
-import { Input } from "../attoms/ui/input";
-import { Label } from "../attoms/ui/label";
+} from "../atoms/ui/dialog";
+import { Input } from "../atoms/ui/input";
+import { Label } from "../atoms/ui/label";
 import { format } from "date-fns";
-import { toast } from "../attoms/ui/use-toast";
+import { toast } from "../atoms/ui/use-toast";
 import {
   useAddNewCategoryMutation,
   useDeleteCategoryMutation,
   useGetCategoriesQuery,
 } from "../store/category-slice";
 import { isEmptyArray } from "../utils";
-import { Badge } from "../attoms/ui/badge";
+import { Badge } from "../atoms/ui/badge";
 import { Category } from "../types";
 import { LoaderCircle, X } from "lucide-react";
 
