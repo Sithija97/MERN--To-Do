@@ -50,6 +50,7 @@ export const NoteCard = ({ item, note, setSelectedMail }: IProps) => {
             <Badge
               key={label._id}
               variant={getBadgeVariantFromLabel(label.title.toLowerCase())}
+              className="w-fit"
             >
               {label.title.toLowerCase()}
             </Badge>
