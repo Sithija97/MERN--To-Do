@@ -9,6 +9,15 @@ const reminderSchema = new Schema({
     enum: ["PENDING", "COMPLETED"],
     default: "PENDING",
   },
+  userId: {
+    type: String,
+    required: true,
+  },
+  userName: {
+    type: String,
+    required: true,
+  },
+  noteId: { type: Schema.Types.ObjectId, ref: "Note" },
 });
 
 export const Reminder = model("Reminder", reminderSchema);

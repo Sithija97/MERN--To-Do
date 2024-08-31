@@ -32,7 +32,6 @@ const noteSchema = new Schema<INote>(
       default: [],
     },
     hasReminder: { type: Boolean, required: true, default: false },
-    reminder: { type: Schema.Types.ObjectId, ref: "Reminder" },
     isTrashed: { type: Boolean, required: true, default: false },
     hasArchived: { type: Boolean, required: true, default: false },
     priority: { type: String, required: true, default: NoteStatus.IDLE },
